@@ -22,8 +22,12 @@ use App\Http\Controllers\ForgotPasswordController;
 Route::get('/login', [AuthController::class, 'login'])->name('Auth.login');
 Route::post('/login', [AuthController::class, 'loginUser'])->name('login');
 
+// Reset password
+Route::get('/reset-password', [AuthController::class, 'formResetPassword'])->name('Auth.formResetPassword');
+
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('qww');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'checkCode'])->name('checkCode');
+
 
 Route::middleware(['auth', 'role:admin|user'])->group(function () {
     Route::get('/dashborad', [DashBoardController::class, 'index'])->name('dashborad.index');

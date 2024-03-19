@@ -3,7 +3,6 @@
 
 <head>
 
-    {{-- <?= $title_meta ?> --}}
 
     @include('Layout.partials.head-css')
 </head>
@@ -35,10 +34,10 @@
                             </div>
                             <div class="p-2 mt-4">
                                 @if (session('loginError'))
-                                <div class="alert alert-danger">
-                                    {{ session('loginError') }}
-                                </div>
-                            @endif
+                                    <div class="alert alert-danger">
+                                        {{ session('loginError') }}
+                                    </div>
+                                @endif
                                 <form action="{{ route('login') }}" method="POST" autocomplete="off" id="loginForm">
                                     @csrf
 
@@ -50,11 +49,12 @@
 
                                     <div class="mb-3">
                                         <div class="float-end">
-                                            <a href="auth-recoverpw" class="text-muted">Forgot password?</a>
+                                            <a href="{{ route('Auth.formResetPassword') }}" class="text-muted">Forgot
+                                                password?</a>
                                         </div>
                                         <label class="form-label" for="userpassword">Password</label>
-                                        <input type="password" class="form-control" id="userpassword" name="userpassword"
-                                            placeholder="Enter password">
+                                        <input type="password" class="form-control" id="userpassword"
+                                            name="userpassword" placeholder="Enter password">
                                     </div>
 
                                     <div class="form-check">
@@ -63,7 +63,9 @@
                                     </div>
 
                                     <div class="mt-3 text-end">
-                                        <button class="g-recaptcha btn btn-primary w-sm waves-effect waves-light"  data-callback='onSubmit'  data-sitekey="{{ config('services.recaptcha.site_key') }}">Log
+                                        <button class="g-recaptcha btn btn-primary w-sm waves-effect waves-light"
+                                            data-callback='onSubmit'
+                                            data-sitekey="{{ config('services.recaptcha.site_key') }}">Log
                                             In</button>
                                     </div>
 
@@ -126,11 +128,11 @@
     @include('Layout.partials.vendor-scripts')
     <!-- App js
         <script src="assets/js/app.js"></script>-->
-        <script>
-            function onSubmit(token) {
-                document.getElementById("loginForm").submit();
-            }
-        </script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("loginForm").submit();
+        }
+    </script>
 
 </body>
 
