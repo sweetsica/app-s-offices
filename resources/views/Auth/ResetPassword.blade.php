@@ -32,20 +32,17 @@
                                     <div class="alert alert-success text-center mb-4" role="alert">
                                         Enter your Email and instructions will be sent to you!
                                     </div>
-                                    <form action="index">
-
+                                    <form action="{{ route('checkGmail') }}" method="POST" autocomplete="off" >
+                                        @csrf
                                         <div class="mb-3">
                                             <label class="form-label" for="useremail">Email</label>
-                                            <input type="email" class="form-control" id="useremail"
-                                                placeholder="Enter email">
+                                            <input type="email" class="form-control"
+                                                placeholder="Enter email" name="gmail">
                                         </div>
-
                                         <div class="mt-3 text-end">
                                             <button class="btn btn-primary w-sm waves-effect waves-light"
                                                 type="submit">Reset</button>
                                         </div>
-
-
                                         <div class="mt-4 text-center">
                                             <p class="mb-0">Remember It ? <a href="auth-login"
                                                     class="fw-medium text-primary"> Signin </a></p>

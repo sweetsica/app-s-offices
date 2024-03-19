@@ -11,7 +11,13 @@ class Verification extends Model
 
     protected $table = 'verification';
 
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $guarded = [];
+    // protected $fillable = [
+    //     'code',
+    //      'time',
+    //     'user_id',
+
+    // ];
 }

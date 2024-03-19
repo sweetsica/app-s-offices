@@ -27,6 +27,7 @@ Route::get('/reset-password', [AuthController::class, 'formResetPassword'])->nam
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('qww');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'checkCode'])->name('checkCode');
+Route::post('/Check-gmail', [ForgotPasswordController::class, 'checkGmail'])->name('checkGmail');
 
 
 Route::middleware(['auth', 'role:admin|user'])->group(function () {
