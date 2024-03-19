@@ -270,9 +270,23 @@
                     <a class="dropdown-item" href="auth-lock-screen"><i
                             class="uil uil-lock-alt font-size-18 align-middle me-1 text-muted"></i> <span
                             class="align-middle">Lock screen</span></a>
-                    <a class="dropdown-item" href="auth-login"><i
+                    {{-- <a class="dropdown-item" href="auth-login"><i
                             class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
-                            class="align-middle">Sign out</span></a>
+                            class="align-middle">Sign out</span></a> --}}
+
+                            {{-- <a class="dropdown-item" href="auth-login"><i
+                                class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle"> --}}
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">
+                                        <i
+                                        class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                                        class="align-middle">Sign out</span>
+                                    </button>
+                                </form>
+                            {{-- </span></a> --}}
+
                 </div>
             </div>
 
