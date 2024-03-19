@@ -24,6 +24,7 @@ Route::post('/login', [AuthController::class, 'loginUser'])->name('login');
 
 // Reset password
 Route::get('/reset-password', [AuthController::class, 'formResetPassword'])->name('Auth.formResetPassword');
+Route::get('/change-password', [AuthController::class, 'formChangePassword'])->name('Auth.ChangePassword');
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('qww');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'checkCode'])->name('checkCode');

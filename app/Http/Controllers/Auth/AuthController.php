@@ -55,4 +55,8 @@ class AuthController extends Controller
     public function formResetPassword() {
         return view('Auth.ResetPassword');
     }
+
+    public function formChangePassword() {
+        return view('Auth.ChangePassword');
+    }
 }
