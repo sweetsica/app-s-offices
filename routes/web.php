@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Department\DepartmentController;
+use App\Http\Controllers\Position\PositionController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Middleware\checkReferrer;
 
@@ -36,8 +38,14 @@ Route::post('/update-password/{id}', [ForgotPasswordController::class, 'updatePa
 Route::middleware(['auth', 'role:admin|user'])->group(function () {
     Route::get('/dashborad', [DashBoardController::class, 'index'])->name('dashborad.index');
     Route::post('/log-out', [AuthController::class, 'logout'])->name('logout');
+
+    // User
+    Route::get('/list-user', [UserController::class, 'index'])->name('user.index');
+
+    // Department
+    Route::get('/list-department', [DepartmentController::class, 'index'])->name('department.list');
+
+    // Position
+    Route::get('/list-position', [PositionController::class, 'index'])->name('position.list');
 });
 
-Route::middleware(['auth', 'role:admin|user'])->group(function () {
-    Route::get('/list-user', [UserController::class, 'index'])->name('user.index');
-});

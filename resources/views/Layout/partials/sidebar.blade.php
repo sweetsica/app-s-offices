@@ -51,14 +51,14 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('department.list') }}" class="waves-effect">
                         <i class="uil-sitemap"></i>
                         <span>Danh sách phòng ban</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('position.list') }}" class="waves-effect">
                         <i class="uil-location-arrow"></i>
                         <span>Danh sách vị trí</span>
                     </a>
