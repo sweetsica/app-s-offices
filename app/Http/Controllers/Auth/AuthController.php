@@ -23,9 +23,7 @@ class AuthController extends Controller
             $email = $request->input('username');
             $password = $request->input('userpassword');
             // $password =  Hash::make($request->userpassword);
-
             // dd($password);
-
             $account = User::where(function ($query) use ($email) {
                 $query->where('email', $email);
             })->first();
@@ -42,6 +40,7 @@ class AuthController extends Controller
                     ->with('loginError', 'Sai tài khoản hoặc mật khẩu');
             }
         } catch (Exception $e) {
+            dd($e);
             return back()->with('loginError', 'Sai tài khoản hoặc mật khẩu');
         }
     }
@@ -56,7 +55,9 @@ class AuthController extends Controller
         return view('Auth.ResetPassword');
     }
 
-    public function formChangePassword() {
-        return view('Auth.ChangePassword');
+    public function formChangePassword(Request $request,$id) {
+
+        $userId =$id;
+        return view('Auth.ChangePassword',compact('userId'));
     }
 }

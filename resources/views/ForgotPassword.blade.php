@@ -34,12 +34,12 @@
                                 <p class="text-muted">Sign in to continue to Minible.</p>
                             </div>
                             <div class="p-2 mt-4">
-                                @if (session('loginError'))
+                                @if(session('error'))
                                 <div class="alert alert-danger">
-                                    {{ session('loginError') }}
+                                    {{ session('error') }}
                                 </div>
                             @endif
-                                <form action="{{ route('checkCode') }}" method="POST" autocomplete="off">
+                                <form action="{{ route('checkCode',$userId) }}" method="POST" autocomplete="off">
                                     @csrf
                                     <div class="mb-3">
                                         <label class="form-label" for="username">Mã</label>

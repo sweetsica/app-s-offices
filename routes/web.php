@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Middleware\checkReferrer;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,12 @@ Route::get('/login', [AuthController::class, 'login'])->name('Auth.login');
 Route::post('/login', [AuthController::class, 'loginUser'])->name('login');
 
 // Reset password
-Route::get('/reset-password', [AuthController::class, 'formResetPassword'])->name('Auth.formResetPassword');
-Route::get('/change-password', [AuthController::class, 'formChangePassword'])->name('Auth.ChangePassword');
-
-Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('qww');
-Route::post('/forgot-password', [ForgotPasswordController::class, 'checkCode'])->name('checkCode');
-Route::post('/Check-gmail', [ForgotPasswordController::class, 'checkGmail'])->name('checkGmail');
+Route::get('/reset-password', [AuthController::class, 'formResetPassword'])->name('Auth.formResetPassword')->middleware(checkReferrer::class);
+Route::get('/change-password/{id}', [AuthController::class, 'formChangePassword'])->name('Auth.ChangePassword')->middleware(checkReferrer::class);
+Route::get('/forgot-password/{id}', [ForgotPasswordController::class, 'show'])->name('forgot-password')->middleware(checkReferrer::class);
+Route::post('/forgot-password/{id}', [ForgotPasswordController::class, 'checkCode'])->name('checkCode')->middleware(checkReferrer::class);
+Route::post('/Check-gmail', [ForgotPasswordController::class, 'checkGmail'])->name('checkGmail')->middleware(checkReferrer::class);
+Route::post('/update-password/{id}', [ForgotPasswordController::class, 'updatePassWord'])->name('updatePassWord')->middleware(checkReferrer::class);
 
 
 Route::middleware(['auth', 'role:admin|user'])->group(function () {

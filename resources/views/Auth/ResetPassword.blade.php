@@ -32,6 +32,11 @@
                                     <div class="alert alert-success text-center mb-4" role="alert">
                                         Enter your Email and instructions will be sent to you!
                                     </div>
+                                    @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                                     <form action="{{ route('checkGmail') }}" method="POST" autocomplete="off" >
                                         @csrf
                                         <div class="mb-3">
