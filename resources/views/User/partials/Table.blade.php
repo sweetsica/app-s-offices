@@ -52,20 +52,21 @@
 
 
     <tbody>
+        @foreach ($users as $user)
         <tr>
             <td>
                 <div class="text-center">
-                    1
+                    {{$user->id}}
                 </div>
             </td>
             <td>
                 <div class="text-center">
-                    TBHT
+                    {{$user->code}}
                 </div>
             </td>
             <td>
                 <div class="text-center">
-                    Nguyễn Văn A
+                    {{$user->name}}
                 </div>
             </td>
             <td>
@@ -80,7 +81,7 @@
             </td>
             <td>
                 <div class="text-center">
-                    nguyenvana@gmail.com
+                    {{$user->email}}
                 </div>
             </td>
 
@@ -90,9 +91,21 @@
                 </div>
             </td>
             <td>
-                <div class="text-center">
-                    <span class="badge bg-success">Đang làm việc</span>
-                </div>
+                    @switch($user->status)
+                        @case(0)
+                        <div class="text-center">
+                            <span class="badge bg-success">Đang làm việc</span>
+                        </div>
+                        @break
+
+                        @case(1)
+                        <div class="text-center">
+                            <span class="badge bg-danger">Ngưng làm việc</span>
+                        </div>
+                        @break
+
+                    @endswitch
+
             </td>
             <td>
                 <div class="text-center">
@@ -103,5 +116,6 @@
                 </div>
             </td>
         </tr>
+        @endforeach
     </tbody>
 </table>
