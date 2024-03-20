@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Middleware\checkReferrer;
 
@@ -37,3 +38,6 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
     Route::post('/log-out', [AuthController::class, 'logout'])->name('logout');
 });
 
+Route::middleware(['auth', 'role:admin|user'])->group(function () {
+    Route::get('/list-user', [UserController::class, 'index'])->name('user.index');
+});

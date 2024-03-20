@@ -61,7 +61,6 @@ $.extend(DataTable.ext.buttons, {
 				};
 			})
 			.toArray();
-
 		return columns;
 	},
 

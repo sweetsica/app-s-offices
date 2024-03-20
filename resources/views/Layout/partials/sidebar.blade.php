@@ -44,7 +44,7 @@
                 <li class="menu-title">Cơ cấu tổ chức</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('user.index') }}" class="waves-effect">
                         <i class="uil-user"></i>
                         <span>Danh sách nhân sự</span>
                     </a>

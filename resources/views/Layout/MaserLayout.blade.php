@@ -1,9 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() ? app()->getLocale() : vn }}">
+
 
 <head>
-
-    {{-- <?= $title_meta ?> --}}
+    <title>Web S-Office</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="W S-Office">
+    <meta name="keywords" content="HTML5, CSS3, JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @include('Layout.partials.head-css')
     @yield('content-css')
@@ -41,7 +45,7 @@
     @include('Layout.partials.right-sidebar')
 
     @include('Layout.partials.vendor-scripts')
-
+    @include('Layout.partials.plugin-js')
     @yield('content-js')
     <!-- apexcharts -->
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
@@ -49,7 +53,7 @@
     <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.js ') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
 </body>
 
