@@ -46,6 +46,11 @@
                                     <option value="Trưởng ban / Quản đốc">Trưởng ban / Quản đốc</option>
                                     <option value="Giám đốc">Giám đốc</option>
                                     <option value="Lãnh đạo">Lãnh đạo</option>
+                                    <option value="Giám sát">Giám sát</option>
+                                    <option value="Quản lý cấp cáo">Quản lý cấp cáo</option>
+                                    <option value="Quản lý cấp trung">Quản lý cấp trung</option>
+                                    <option value="Lao động phổ thông">Lao động phổ thông</option>
+                                    <option value="Cộng tác">Cộng tác</option>
                                 </select>
                             </div>
                         </div>
