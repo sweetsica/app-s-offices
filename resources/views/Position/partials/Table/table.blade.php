@@ -1,0 +1,98 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-success waves-effect waves-light me-3" data-bs-toggle="modal"
+                data-bs-target="#modalAdd">
+                <i class="uil uil-plus"></i> Thêm
+            </button>
+            <button type="button" class="btn btn-primary waves-effect waves-light">
+                <i class="uil uil-filter"></i>
+            </button>
+        </div>
+        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="text-center" data-bs-toggle="tooltip" title="STT">
+                            STT
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Mã vị trí">
+                            Mã vị trí
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Tên vị trí/Chức danh">
+                            Tên vị trí/Chức danh
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Cấp nhân sự">
+                            Cấp nhân sự
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị công tác">
+                            Đơn vị công tác
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Mô tả công việc (Tóm tắt)">
+                            Mô tả công việc (Tóm tắt)
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Hành động">
+                            Hành động
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="text-center" data-bs-toggle="tooltip" title="STT">
+                            STT
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Mã vị trí">
+                            Mã vị trí
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Tên vị trí/Chức danh">
+                            Tên vị trí/Chức danh
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Cấp nhân sự">
+                            Cấp nhân sự
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị công tác">
+                            Đơn vị công tác
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center" data-bs-toggle="tooltip" title="Mô tả công việc (Tóm tắt)">
+                            Mô tả công việc (Tóm tắt)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <button class="px-3 text-primary" style="border: none"><i
+                                    class="uil uil-pen font-size-18"></i></button>
+                            <button class="px-3 text-danger" style="border: none"><i
+                                    class="uil uil-trash-alt font-size-18"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
