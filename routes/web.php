@@ -36,7 +36,7 @@ Route::post('/update-password/{id}', [ForgotPasswordController::class, 'updatePa
 
 
 Route::middleware(['auth', 'role:admin|user'])->group(function () {
-    Route::get('/dashborad', [DashBoardController::class, 'index'])->name('dashborad.index');
+    Route::get('/', [DashBoardController::class, 'index'])->name('dashborad.index');
     Route::post('/log-out', [AuthController::class, 'logout'])->name('logout');
 
     // User
