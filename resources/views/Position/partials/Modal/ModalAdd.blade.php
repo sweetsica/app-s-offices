@@ -53,6 +53,11 @@
                                     <option value="5">Trưởng ban / Quản đốc</option>
                                     <option value="6">Giám đốc</option>
                                     <option value="7">Lãnh đạo</option>
+                                    <option value="8">Giám sát</option>
+                                    <option value="9">Quản lý cấp cáo</option>
+                                    <option value="10">Quản lý cấp trung</option>
+                                    <option value="11">Lao động phổ thông</option>
+                                    <option value="12">Cộng tác</option>
                                 </select>
                             </div>
                         </div>
