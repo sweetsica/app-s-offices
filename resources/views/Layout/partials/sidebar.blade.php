@@ -35,7 +35,7 @@
                 <li class="menu-title"{{ __('Files.Menu') }}></li>
 
                 <li>
-                    <a href="">
+                    <a href="/">
                         <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
                         <span>DashBoard</span>
                     </a>
