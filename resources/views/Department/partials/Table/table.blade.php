@@ -19,11 +19,6 @@
                         </div>
                     </th>
                     <th>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Lĩnh vực kinh doanh">
-                            Lĩnh vực
-                        </div>
-                    </th>
-                    <th>
                         <div class="text-center" data-bs-toggle="tooltip" title="Tên đơn vị">
                             Tên đơn vị
                         </div>
@@ -61,11 +56,6 @@
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Mã đơn vị">
                             Mã đơn vị
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Lĩnh vực kinh doanh">
-                            Lĩnh vực
                         </div>
                     </td>
                     <td>
