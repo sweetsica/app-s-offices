@@ -32,6 +32,13 @@ class AuthController extends Controller
 
             if (Auth::attempt($credentials)) {
                 // Đăng nhập thành công
+                $users = User::select(
+                    'users.id',
+                    'users.code',
+                    'users.name',
+                    'users.status',
+                )->where('status','0')->get();
+                session()->put('users', $users);
                 return redirect()->route('dashborad.index');
             } else {
                 // Đăng nhập thất bại

@@ -14,4 +14,42 @@ class Department extends Model
     public $timestamps = true;
 
     protected $guarded = [];
+
+    //    public function children()
+    // {
+    //     return $this->hasMany(Department::class, 'parent_id', 'id');
+    // }
+
+    // public function allDescendants()
+    // {
+    //     return $this->children()->with('allDescendants');
+    // }
+
+
+
+    public function children()
+    {
+        return $this->hasMany(Department::class, 'parent_id', 'id');
+    }
+
+    // public function descendants()
+    // {
+    //     return $this->children()->with('descendants');
+    // }
+
+    public function getAllDescendantIds()
+    {
+        $descendantIds = [$this->id];
+
+        foreach ($this->children as $child) {
+            $descendantIds = array_merge($descendantIds, $child->getAllDescendantIds());
+        }
+
+        return $descendantIds;
+    }
+
+    // public static function getDescendants($parentId)
+    // {
+    //     return self::with('descendants')->find($parentId);
+    // }
 }
