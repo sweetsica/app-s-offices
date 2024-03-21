@@ -52,15 +52,16 @@
             </thead>
 
             <tbody>
+                @foreach ($departments as $department)
                 <tr>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Mã đơn vị">
-                            Mã đơn vị
+                            {{$department->code}}
                         </div>
                     </td>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Tên đơn vị">
-                            Tên đơn vị
+                            {{$department->name}}
                         </div>
                     </td>
                     <td>
@@ -80,7 +81,7 @@
                     </td>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Chức năng nhiệm vụ">
-                            Chức năng nhiệm vụ
+                            {{$department->description}}
                         </div>
                     </td>
                     <td>
@@ -92,6 +93,7 @@
                         </div>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

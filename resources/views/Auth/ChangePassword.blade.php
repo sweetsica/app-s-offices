@@ -32,17 +32,22 @@
                                     <h5 class="text-primary">Thay đổi mật khẩu</h5>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="index">
-
+                                    @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+                                    <form action="{{ route('updatePassWord',$userId) }}" method="POST" autocomplete="off" >
+                                        @csrf
                                         <div class="mb-3">
                                             <label class="form-label" for="passwordNew">Mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="passwordNew"
+                                            <input type="password" class="form-control" id="passwordNew" name="passWord1"
                                                 placeholder="Nhập mật khẩu mới">
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label" for="confirmPassword">Xác nhận mật khẩu</label>
-                                            <input type="password" class="form-control" id="confirmPassword"
+                                            <input type="password" class="form-control" id="confirmPassword" name="passWord2"
                                                 placeholder="Nhập lại mật khẩu">
                                         </div>
                                         <div class="mt-3 text-end">

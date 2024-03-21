@@ -42,6 +42,11 @@
                                         {{ session('loginError') }}
                                     </div>
                                 @endif
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
                                 <form action="{{ route('login') }}" method="POST" autocomplete="off" id="loginForm">
                                     @csrf
 
