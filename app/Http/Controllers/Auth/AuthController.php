@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\User;
 use Exception;
 use Illuminate\Contracts\Session\Session;
@@ -39,6 +40,12 @@ class AuthController extends Controller
                     'users.status',
                 )->where('status','0')->get();
                 session()->put('users', $users);
+                $departments = Department::select(
+                    'departments.id',
+                    'departments.code',
+                    'departments.name',
+                )->get();
+                session()->put('departments', $departments);
                 return redirect()->route('dashborad.index');
             } else {
                 // Đăng nhập thất bại

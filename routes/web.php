@@ -49,5 +49,6 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
 
     // Position
     Route::get('/list-position', [PositionController::class, 'index'])->name('position.list');
+    Route::post('/store-position', [PositionController::class, 'store'])->name('position.store');
 });
 

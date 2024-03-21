@@ -22,9 +22,6 @@ class DepartmentController extends Controller
                 'departments.description',
                 'departments.area_id'
             )->get();
-
-            // $department = Department::getDescendants(2);
-            // $allIds = $department ? $department->getAllDescendantIds() : [];
             return view('Department.index',compact('departments'));
         } catch (Exception $e) {
             // dd($e);

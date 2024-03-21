@@ -52,35 +52,58 @@
             </thead>
 
             <tbody>
+                @foreach ($positions as $position)
                 <tr>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="STT">
-                            STT
+                            {{$position->id}}
                         </div>
                     </td>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Mã vị trí">
-                            Mã vị trí
+                            {{$position->code}}
                         </div>
                     </td>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Tên vị trí/Chức danh">
-                            Tên vị trí/Chức danh
+                            {{$position->name}}
                         </div>
                     </td>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Cấp nhân sự">
-                            Cấp nhân sự
+                            @switch($position->position_level)
+                            @case(1)
+                            Công nhân viên
+                            @break
+                            @case(2)
+                            Chuyên viên / Kĩ thuật
+                            @break
+                            @case(3)
+                            Trưởng nhóm / Tổ trưởng
+                            @break
+                            @case(4)
+                            Trưởng phòng / Đội trường
+                            @break
+                            @case(5)
+                            Trưởng ban / Quản đốc
+                            @break
+                            @case(6)
+                            Giám đốc
+                            @break
+                            @case(7)
+                            Lãnh đạo
+                            @break
+                        @endswitch
                         </div>
                     </td>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị công tác">
-                            Đơn vị công tác
+                             {{$position->departement->name}}
                         </div>
                     </td>
                     <td>
                         <div class="text-center" data-bs-toggle="tooltip" title="Mô tả công việc (Tóm tắt)">
-                            Mô tả công việc (Tóm tắt)
+                            {{$position->description}}
                         </div>
                     </td>
                     <td>
@@ -92,6 +115,7 @@
                         </div>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
