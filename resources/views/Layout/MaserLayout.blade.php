@@ -9,7 +9,7 @@
     <meta name="keywords" content="HTML5, CSS3, JavaScript">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -31,7 +31,7 @@
                 <div class="container-fluid">
 
                     {{-- <?= $page_title ?> --}}
-
+                    {{ app()->getLocale() }}
                     @yield('content')
 
                 </div> <!-- container-fluid -->

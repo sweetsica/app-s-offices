@@ -61,6 +61,8 @@
             </div>
 
             <div class="dropdown d-inline-block language-switch">
+                <a href="">VN</a>
+                <a href="">EN</a>
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <?php
@@ -274,18 +276,17 @@
                             class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
                             class="align-middle">Sign out</span></a> --}}
 
-                            {{-- <a class="dropdown-item" href="auth-login"><i
+                    {{-- <a class="dropdown-item" href="auth-login"><i
                                 class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
                                 class="align-middle"> --}}
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button class="dropdown-item" type="submit">
-                                        <i
-                                        class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
-                                        class="align-middle">Sign out</span>
-                                    </button>
-                                </form>
-                            {{-- </span></a> --}}
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="dropdown-item" type="submit">
+                            <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle">Sign out</span>
+                        </button>
+                    </form>
+                    {{-- </span></a> --}}
 
                 </div>
             </div>
