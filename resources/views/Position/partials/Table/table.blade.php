@@ -93,6 +93,21 @@
                             @case(7)
                             Lãnh đạo
                             @break
+                            @case(8)
+                            Giám sát
+                            @break
+                            @case(9)
+                            Quản lý cấp cáo
+                            @break
+                            @case(10)
+                            Quản lý cấp trung
+                            @break
+                            @case(11)
+                            Lao động phổ thông
+                            @break
+                            @case(12)
+                            Cộng tác
+                            @break
                         @endswitch
                         </div>
                     </td>
