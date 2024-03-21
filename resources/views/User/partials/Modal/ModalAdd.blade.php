@@ -7,19 +7,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
-            <form class="custom-validation" action="#">
+            <form class="custom-validation" method="POST" action="{{ route('user.store') }} ">
+                @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Mã *</label>
-                                <input type="text" class="form-control" required placeholder="Nhập mã nhân sự*" />
+                                <input type="text" class="form-control" required placeholder="Nhập mã nhân sự*" name="code" />
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Tên *</label>
-                                <input type="text" class="form-control" required placeholder="Nhập tên nhân sự*" />
+                                <input type="text" class="form-control" required placeholder="Nhập tên nhân sự*" name="name"/>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
@@ -45,10 +46,10 @@
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Email *</label>
-                                <input type="email" class="form-control" required placeholder="Nhập địa chỉ Email" />
+                                <input type="email" class="form-control" required placeholder="Nhập địa chỉ Email" name="email"/>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        {{-- <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Phân quyền *</label>
                                 <select class="form-control select2" id="formSelect" required>
@@ -57,14 +58,15 @@
                                     <option value="0">User</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Trạng thái *</label>
-                                <select class="form-control select2" id="formSelect" required>
+                                <select class="form-control select2" id="formSelect" required name="status">
                                     <option disabled>Chọn trạng thái*</option>
-                                    <option value="0">Ngừng làm việc</option>
-                                    <option value="1">Đang làm việc</option>
+                                    <option value="0">Đang làm việc</option>
+                                    <option value="1">Ngừng làm việc</option>
+
                                 </select>
                             </div>
                         </div>

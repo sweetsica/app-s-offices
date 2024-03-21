@@ -15,6 +15,11 @@
                             <i class="uil uil-filter"></i>
                         </button>
                     </div>
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     @include('User.partials.Table')
                 </div>
             </div>

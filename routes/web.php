@@ -41,9 +41,11 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
 
     // User
     Route::get('/list-user', [UserController::class, 'index'])->name('user.index');
+    Route::post('/list-user', [UserController::class, 'store'])->name('user.store');
 
     // Department
     Route::get('/list-department', [DepartmentController::class, 'index'])->name('department.list');
+    Route::post('/store-department', [DepartmentController::class, 'store'])->name('department.store');
 
     // Position
     Route::get('/list-position', [PositionController::class, 'index'])->name('position.list');

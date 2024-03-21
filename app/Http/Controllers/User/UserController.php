@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,22 +25,28 @@ class UserController extends Controller
 
     public function store(Request $request){
         try {
-            $name = $request->get('name');
-            $code = $request->get('code');
-            $email = $request->get('email');
-            $status = $request->get('status');
-            $position_id  = $request->get('position_id');
-            $department_id = $request->get('department_id');
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'code' => 'required|unique:users,code|string|max:255',
+                'email' => 'required|email|unique:users,email|max:255',
+                'status' => 'required|string|max:255',
+                // 'position_id' => 'required|integer',
+                // 'department_id' => 'required|integer',
+            ], [
+                'code.unique' => 'Mã code đã tồn tại. Vui lòng chọn một mã khác.',
+                'email.unique' => 'Email đã tồn tại. Vui lòng chọn một email khác.'
+            ]);
             $data = new User();
-            $data->name = $name;
-            $data->code=$code;
-            $data->email=$email;
-            $data->status=$status;
+            $data->name = $validatedData['name'];
+            $data->code = $validatedData['code'];
+            $data->email = $validatedData['email'];
+            $data->status = $validatedData['status'];
+            $data->password= Hash::make(123456);
             $data->save();
-            Session::flash('success', 'Thêm mới thành công');
+            $request->session()->flash('success', 'Thêm mới thành công');
             return redirect()->route('user.index');
         } catch (Exception $e) {
-            dd($e);
+            // dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
