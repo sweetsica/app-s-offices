@@ -14,56 +14,53 @@
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Mã *</label>
-                                <input type="text" class="form-control" required placeholder="Nhập mã nhân sự*" name="code" />
+                                <input type="text" class="form-control" required placeholder="Nhập mã nhân sự*"
+                                    name="code" />
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Tên *</label>
-                                <input type="text" class="form-control" required placeholder="Nhập tên nhân sự*" name="name"/>
+                                <input type="text" class="form-control" required placeholder="Nhập tên nhân sự*"
+                                    name="name" />
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Vị trí *</label>
-                                <select class="form-control select2" id="formSelect" required>
-                                    <option>Chọn vị trí*</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="HI">Hawaii</option>
+                                <select class="form-control select2" id="formSelect" required name="department_id">
+                                    <option disabled selected>Chọn vị trí*</option>
+                                    @foreach (session('listPositions') as $position)
+                                        <option value="{{ $position->id }}">
+                                            {{ $position->code }} - {{ $position->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Phòng ban *</label>
-                                <select class="form-control select2" id="formSelect" required>
-                                    <option disabled>Chọn phòng ban*</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="HI">Hawaii</option>
+                                <select class="form-control select2" id="formSelect" required name="position_id">
+                                    <option disabled selected>Chọn vị trí*</option>
+                                    @foreach (session('departments') as $department)
+                                        <option value="{{ $department->id }}">
+                                            {{ $department->code }} - {{ $department->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Email *</label>
-                                <input type="email" class="form-control" required placeholder="Nhập địa chỉ Email" name="email"/>
+                                <input type="email" class="form-control" required placeholder="Nhập địa chỉ Email"
+                                    name="email" />
                             </div>
                         </div>
-                        {{-- <div class="col-12 col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label">Phân quyền *</label>
-                                <select class="form-control select2" id="formSelect" required>
-                                    <option disabled>Chọn phân quyền*</option>
-                                    <option value="1">Admin</option>
-                                    <option value="0">User</option>
-                                </select>
-                            </div>
-                        </div> --}}
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Trạng thái *</label>
                                 <select class="form-control select2" id="formSelect" required name="status">
-                                    <option disabled>Chọn trạng thái*</option>
+                                    <option disabled selected>Chọn trạng thái*</option>
                                     <option value="0">Đang làm việc</option>
                                     <option value="1">Ngừng làm việc</option>
 
