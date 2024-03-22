@@ -34,7 +34,8 @@
                     @endphp --}}
 
                     {{-- <?= $page_title ?> --}}
-                    {{ app()->getLocale() }}
+                    {{-- {{ dd(session()) }} --}}
+                    {{ __('Files.demo') }}
                     @yield('content')
 
                 </div> <!-- container-fluid -->
