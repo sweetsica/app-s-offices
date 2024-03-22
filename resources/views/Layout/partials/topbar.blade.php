@@ -61,8 +61,8 @@
             </div>
 
             <div class="dropdown d-inline-block language-switch">
-                <a href="">VN</a>
-                <a href="">EN</a>
+                <a href="{{ route('changeLang', ['lang' => 'vn']) }}">VN</a>
+                <a href="{{ route('changeLang', ['lang' => 'en']) }}">EN</a>
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <?php
