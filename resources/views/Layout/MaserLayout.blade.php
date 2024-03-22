@@ -59,6 +59,9 @@
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
+    {{-- Custom js --}}
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+
 </body>
 
 </html>
