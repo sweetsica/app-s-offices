@@ -42,6 +42,8 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
     // User
     Route::get('/list-user', [UserController::class, 'index'])->name('user.index');
     Route::post('/list-user', [UserController::class, 'store'])->name('user.store');
+    Route::get('/modalEdit/{id}', [UserController::class, 'modalEdit'])->name('user.modalEdit');
+    Route::get('/modalDelete/{id}', [UserController::class, 'modalDelete'])->name('user.modalDelete');
 
     // Department
     Route::get('/list-department', [DepartmentController::class, 'index'])->name('department.list');

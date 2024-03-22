@@ -15,7 +15,7 @@
                             <i class="uil uil-filter"></i>
                         </button>
                     </div>
-                    @if(session('error'))
+                    @if (session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
                         </div>
@@ -25,7 +25,9 @@
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-    @include('User.partials.Modal.ModalAdd')
+    @include('User.partials.Modal.Add.ModalAdd')
+    @include('User.partials.Modal.Edit.ModalEdit')
+    @include('User.partials.Modal.Delete.ModalDelete')
 @endsection
 @section('content-js')
 @endsection

@@ -51,4 +51,15 @@ class UserController extends Controller
             return back()->with('error', $error);
         }
     }
+
+    public function modalEdit($id) {
+        $usersDetail = User::where('id', $id)->first();
+        return view('User.partials.Modal.Edit.ContentModalEdit')
+        ->with('usersDetail', $usersDetail);
+    }
+
+    public function modalDelete($id) {
+        return view('User.partials.Modal.Delete.ContentModalDelete')
+        ->with('id', $id);
+    }
 }
