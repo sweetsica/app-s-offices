@@ -47,12 +47,14 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
     // User
     Route::get('/list-user', [UserController::class, 'index'])->name('user.index');
     Route::post('/list-user', [UserController::class, 'store'])->name('user.store');
-    Route::get('/modalEdit/{id}', [UserController::class, 'modalEdit'])->name('user.modalEdit');
-    Route::get('/modalDelete/{id}', [UserController::class, 'modalDelete'])->name('user.modalDelete');
+    Route::get('/modalEditUser/{id}', [UserController::class, 'modalEdit'])->name('user.modalEdit');
+    Route::get('/modalDeleteUser/{id}', [UserController::class, 'modalDelete'])->name('user.modalDelete');
 
     // Department
     Route::get('/list-department', [DepartmentController::class, 'index'])->name('department.list');
     Route::post('/store-department', [DepartmentController::class, 'store'])->name('department.store');
+    Route::get('/modalEditDepartment/{id}', [DepartmentController::class, 'modalEdit'])->name('department.modalEdit');
+    Route::get('/modalDeleteDepartment/{id}', [DepartmentController::class, 'modalDelete'])->name('department.modalDelete');
 
     // Position
     Route::get('/list-position', [PositionController::class, 'index'])->name('position.list');

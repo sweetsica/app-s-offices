@@ -94,12 +94,23 @@ class DepartmentController extends Controller
             $data->user_id = $validatedData['user_id'] ?? null;
             $data->description = $validatedData['description'] ?? null;
             $data->save();
-            $request->session()->flash('success', 'Thêm mới thành công');
+            $request->session()->flash('success', 'Sửa thành công');
             return redirect()->route('department.list');
         }catch (Exception $e) {
             dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
+    }
+
+    public function modalEdit($id) {
+        $departmentDetail = Department::where('id', $id)->first();
+        return view('Department.partials.Modal.Edit.ContentModalEdit')
+        ->with('departmentDetail', $departmentDetail);
+    }
+
+    public function modalDelete($id) {
+        return view('Department.partials.Modal.Delete.ContentModalDelete')
+        ->with('id', $id);
     }
 }
