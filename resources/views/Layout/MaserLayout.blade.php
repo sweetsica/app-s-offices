@@ -29,6 +29,9 @@
 
             <div class="page-content">
                 <div class="container-fluid">
+                    {{-- @php
+                        dd(session('locale'))
+                    @endphp --}}
 
                     {{-- <?= $page_title ?> --}}
                     {{ app()->getLocale() }}

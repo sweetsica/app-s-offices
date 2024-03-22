@@ -7,6 +7,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Position\PositionController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\Language;
+use App\Http\Controllers\LanguageController;
 use App\Http\Middleware\checkReferrer;
 
 /*
@@ -20,7 +22,10 @@ use App\Http\Middleware\checkReferrer;
 |
 */
 
+// Route::get('lang/change', [Language::class, 'index'])->name('changeLang');
 
+
+Route::get('lang-change', [LanguageController::class, 'index'])->name('changeLang');
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('Auth.login');
