@@ -5,6 +5,7 @@
  */
 
 return [
+    'demo'=> 'demo',
     'FAQs'=>'FAQs',
     'Menu' => 'Menu',
     'Minible' => 'Minible',

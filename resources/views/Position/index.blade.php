@@ -7,7 +7,9 @@
             @include('Position.partials.Table.table')
         </div>
     </div>
-    @include('Position.partials.Modal.ModalAdd')
+    @include('Position.partials.Modal.Add.ModalAdd')
+    @include('Position.partials.Modal.Edit.ModalEdit')
+    @include('Position.partials.Modal.Delete.ModalDelete')
 @endsection
 @section('content-js')
 @endsection

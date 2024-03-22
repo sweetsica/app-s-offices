@@ -298,6 +298,7 @@ File: Main Js File
 
             $(modal).find('.select2').select2('destroy');
             $(modal).find('.select2').select2();
+
         });
     }
 
