@@ -1,3 +1,32 @@
+@php
+    $arrayPosition = [
+        1 => 'Công nhân viên',
+        2 => 'Chuyên viên / Kĩ thuật',
+        3 => 'Trưởng nhóm / Tổ trưởng',
+        4 => 'Trưởng phòng / Đội trường',
+        5 => 'Trưởng ban / Quản đốc',
+        6 => 'Giám đốc',
+        7 => 'Lãnh đạo',
+        8 => 'Giám sát',
+        9 => 'Quản lý cấp cao',
+        10 => 'Quản lý cấp trung',
+        11 => 'Lao động phổ thông',
+        12 => 'Cộng tác',
+    ];
+
+    function getPositionLevel($dataPositionLevel, $arrayPosition)
+    {
+        $positionLevel = '';
+        foreach ($arrayPosition as $key => $value) {
+            if ($key == $dataPositionLevel) {
+                $positionLevel = $value;
+            }
+        }
+
+        return $positionLevel;
+    }
+@endphp
+
 <div class="card">
     <div class="card-body">
         <div class="d-flex justify-content-end mb-3">
@@ -53,83 +82,52 @@
 
             <tbody>
                 @foreach ($positions as $position)
-                <tr>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="STT">
-                            {{$position->id}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Mã vị trí">
-                            {{$position->code}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Tên vị trí/Chức danh">
-                            {{$position->name}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Cấp nhân sự">
-                            @switch($position->position_level)
-                            @case(1)
-                            Công nhân viên
-                            @break
-                            @case(2)
-                            Chuyên viên / Kĩ thuật
-                            @break
-                            @case(3)
-                            Trưởng nhóm / Tổ trưởng
-                            @break
-                            @case(4)
-                            Trưởng phòng / Đội trường
-                            @break
-                            @case(5)
-                            Trưởng ban / Quản đốc
-                            @break
-                            @case(6)
-                            Giám đốc
-                            @break
-                            @case(7)
-                            Lãnh đạo
-                            @break
-                            @case(8)
-                            Giám sát
-                            @break
-                            @case(9)
-                            Quản lý cấp cáo
-                            @break
-                            @case(10)
-                            Quản lý cấp trung
-                            @break
-                            @case(11)
-                            Lao động phổ thông
-                            @break
-                            @case(12)
-                            Cộng tác
-                            @break
-                        @endswitch
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị công tác">
-                             {{$position->departement->name}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Mô tả công việc (Tóm tắt)">
-                            {{$position->description}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center">
-                            <button class="px-3 text-primary" style="border: none"><i
-                                    class="uil uil-pen font-size-18"></i></button>
-                            <button class="px-3 text-danger" style="border: none"><i
-                                    class="uil uil-trash-alt font-size-18"></i></button>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="STT">
+                                {{ $position->id }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="Mã vị trí">
+                                {{ $position->code }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="Tên vị trí/Chức danh">
+                                {{ $position->name }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="Cấp nhân sự">
+                                {{ getPositionLevel($position->position_level, $arrayPosition) }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị công tác">
+                                {{ $position->departement->name }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="Mô tả công việc (Tóm tắt)">
+                                {{ $position->description }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center">
+                                <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
+                                    data-bs-target="#modalEdit"
+                                    data-attr="{{ route('position.modalEdit', $position->id) }}"
+                                    style="border: none; background-color: transparent"><i
+                                        class="uil uil-pen font-size-18"></i></button>
+                                <button class="px-3 text-danger btn-delete" data-bs-toggle="modal"
+                                    data-bs-target="#modalDelete"
+                                    data-attr="{{ route('position.modalDelete', $position->id) }}"
+                                    style="border: none; background-color: transparent"><i
+                                        class="uil uil-trash-alt font-size-18"></i></button>
+                            </div>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

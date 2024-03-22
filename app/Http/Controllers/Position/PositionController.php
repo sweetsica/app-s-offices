@@ -58,4 +58,15 @@ class PositionController extends Controller
             return back()->with('error', $error);
         }
     }
+
+    public function modalEdit($id) {
+        $positionDetail = Position::where('id', $id)->first();
+        return view('Position.partials.Modal.Edit.ContentModalEdit')
+        ->with('positionDetail', $positionDetail);
+    }
+
+    public function modalDelete($id) {
+        return view('Position.partials.Modal.Delete.ContentModalDelete')
+        ->with('id', $id);
+    }
 }
