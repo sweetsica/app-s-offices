@@ -29,13 +29,6 @@
 
             <div class="page-content">
                 <div class="container-fluid">
-                    {{-- @php
-                        dd(session('locale'))
-                    @endphp --}}
-
-                    {{-- <?= $page_title ?> --}}
-                    {{-- {{ dd(session()) }} --}}
-                    {{ __('Files.demo') }}
                     @yield('content')
 
                 </div> <!-- container-fluid -->

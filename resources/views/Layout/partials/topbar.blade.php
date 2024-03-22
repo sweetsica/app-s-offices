@@ -61,35 +61,37 @@
             </div>
 
             <div class="dropdown d-inline-block language-switch">
-                <a href="{{ route('changeLang', ['lang' => 'vn']) }}">VN</a>
-                <a href="{{ route('changeLang', ['lang' => 'en']) }}">EN</a>
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <?php
-                    $session = session();
-                    $lang = $session->get('lang');
+                    $lang = session('locale');
                     switch ($lang) {
                         case 'en':
                             echo '<img src="assets/images/flags/us.jpg" alt="Header Language" height="16">';
                             break;
-                        case 'es':
-                            echo '<img src="assets/images/flags/spain.jpg" alt="Header Language" height="16">';
-                            break;
-                        case 'de':
-                            echo '<img src="assets/images/flags/germany.jpg" alt="Header Language" height="16">';
-                            break;
-                        case 'it':
-                            echo '<img src="assets/images/flags/italy.jpg" alt="Header Language" height="16">';
-                            break;
-                        case 'ru':
-                            echo '<img src="assets/images/flags/russia.jpg" alt="Header Language" height="16">';
+                        case 'vn':
+                            echo '<img src="assets/images/flags/vn.jpg" alt="Header Language" height="16">';
                             break;
                         default:
-                            echo '<img src="assets/images/flags/us.jpg" alt="Header Language" height="16">';
+                            echo '<img src="assets/images/flags/vn.jpg" alt="Header Language" height="16">';
                     }
                     ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
+                    @if ($lang !== 'en')
+                        <a href="{{ route('changeLang', ['lang' => 'en']) }}" class="dropdown-item notify-item">
+                            <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span
+                                class="align-middle">English</span>
+                        </a>
+                    @endif
+
+                    @if ($lang !== 'vn')
+                        <a href="{{ route('changeLang', ['lang' => 'vn']) }}" class="dropdown-item notify-item">
+                            <img src="assets/images/flags/vn.jpg" alt="user-image" class="me-1" height="12">
+                            <span class="align-middle">Việt Nam</span>
+                        </a>
+                    @endif
+
                 </div>
             </div>
 
