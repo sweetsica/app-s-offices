@@ -20,8 +20,9 @@
                     <div>
 
                         <a href="index" class="mb-5 d-block auth-logo">
-                            <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                            <img src="assets/images/logo-light.png" alt="" height="22"
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
+                                class="logo logo-dark">
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
                                 class="logo logo-light">
                         </a>
                         <div class="card">
@@ -29,32 +30,27 @@
                             <div class="card-body p-4">
 
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Reset Password</h5>
-                                    <p class="text-muted">Reset Password with Minible.</p>
+                                    <h5 class="text-primary">{{ __('Login.reset_password') }}</h5>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <div class="alert alert-success text-center mb-4" role="alert">
-                                        Enter your Email and instructions will be sent to you!
+                                        {{ __('Login.title_reset') }}
                                     </div>
-                                    @if(session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
-                                    <form action="{{ route('checkGmail') }}" method="POST" autocomplete="off" >
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
+                                    <form action="{{ route('checkGmail') }}" method="POST" autocomplete="off">
                                         @csrf
                                         <div class="mb-3">
-                                            <label class="form-label" for="useremail">Email</label>
+                                            <label class="form-label" for="useremail">{{ __('Login.username') }}</label>
                                             <input type="email" class="form-control"
-                                                placeholder="Enter email" name="gmail">
+                                                placeholder="{{ __('Login.enter_email') }}" name="gmail">
                                         </div>
                                         <div class="mt-3 text-end">
                                             <button class="btn btn-primary w-sm waves-effect waves-light"
-                                                type="submit">Reset</button>
-                                        </div>
-                                        <div class="mt-4 text-center">
-                                            <p class="mb-0">Remember It ? <a href="auth-login"
-                                                    class="fw-medium text-primary"> Signin </a></p>
+                                                type="submit">{{ __('Login.reset') }}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -65,8 +61,7 @@
                             <p>©
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Minible. Crafted with <i class="mdi mdi-heart text-danger"></i>
-                                by Themesbrand
+                                </script> Powered by Steam
                             </p>
                         </div>
                     </div>

@@ -7,7 +7,7 @@
     <meta name="description" content="W S-Office">
     <meta name="keywords" content="HTML5, CSS3, JavaScript">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    {{-- <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}"> --}}
     @include('Layout.partials.head-css')
 </head>
 {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
@@ -20,8 +20,9 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <a href="" class="mb-5 d-block auth-logo">
-                            <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                            <img src="assets/images/logo-light.png" alt="" height="22"
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
+                                class="logo logo-dark">
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
                                 class="logo logo-light">
                         </a>
                     </div>
@@ -33,8 +34,8 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                                <h5 class="text-primary">Welcome Back !</h5>
-                                <p class="text-muted">Sign in to continue to Minible.</p>
+                                <h5 class="text-primary">{{ __('Login.welcome') }}</h5>
+                                <p class="text-muted">{{ __('Login.title_login') }}</p>
                             </div>
                             <div class="p-2 mt-4">
                                 @if (session('loginError'))
@@ -42,7 +43,7 @@
                                         {{ session('loginError') }}
                                     </div>
                                 @endif
-                                @if(session('success'))
+                                @if (session('success'))
                                     <div class="alert alert-success">
                                         {{ session('success') }}
                                     </div>
@@ -51,36 +52,29 @@
                                     @csrf
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Username</label>
+                                        <label class="form-label" for="username">{{ __('Login.username') }}</label>
                                         <input type="text" class="form-control" id="username" name="username"
-                                            placeholder="Enter username">
+                                            placeholder="{{ __('Login.enter_username') }}">
                                     </div>
 
                                     <div class="mb-3">
                                         <div class="float-end">
-                                            <a href="{{ route('Auth.formResetPassword') }}" class="text-muted">Forgot
-                                                password?</a>
+                                            <a href="{{ route('Auth.formResetPassword') }}"
+                                                class="text-muted">{{ __('Login.reset_password') }}</a>
                                         </div>
-                                        <label class="form-label" for="userpassword">Password</label>
+                                        <label class="form-label" for="userpassword">{{ __('Login.password') }}</label>
                                         <input type="password" class="form-control" id="userpassword"
-                                            name="userpassword" placeholder="Enter password">
+                                            name="userpassword" placeholder="{{ __('Login.enter_password') }}">
                                     </div>
-
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="auth-remember-check">
-                                        <label class="form-check-label" for="auth-remember-check">Remember me</label>
-                                    </div>
-
                                     <div class="mt-3 text-end">
                                         <button class="g-recaptcha btn btn-primary w-sm waves-effect waves-light"
                                             data-callback='onSubmit'
-                                            data-sitekey="{{ config('services.recaptcha.site_key') }}">Log
-                                            In</button>
+                                            data-sitekey="{{ config('services.recaptcha.site_key') }}">{{ __('Login.log_in') }}</button>
                                     </div>
 
 
 
-                                    <div class="mt-4 text-center">
+                                    {{-- <div class="mt-4 text-center">
                                         <div class="signin-other-title">
                                             <h5 class="font-size-14 mb-3 title">Sign in with</h5>
                                         </div>
@@ -106,12 +100,12 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="mt-4 text-center">
+                                    {{-- <div class="mt-4 text-center">
                                         <p class="mb-0">Don't have an account ? <a href="auth-register"
                                                 class="fw-medium text-primary"> Signup now </a> </p>
-                                    </div>
+                                    </div> --}}
                                 </form>
                             </div>
 
@@ -122,8 +116,7 @@
                         <p>©
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> Minible. Crafted with <i class="mdi mdi-heart text-danger"></i> by
-                            Themesbrand
+                            </script> Powered by Steam
                         </p>
                     </div>
 

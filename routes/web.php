@@ -28,21 +28,22 @@ use App\Http\Middleware\MultipleLanguage;
 
 Route::get('lang-change', [LanguageController::class, 'index'])->name('changeLang');
 
+Route::middleware(MultipleLanguage::class)->group(function () {
 
-Route::get('/login', [AuthController::class, 'login'])->name('Auth.login');
-Route::post('/login', [AuthController::class, 'loginUser'])->name('login');
+    Route::get('/login', [AuthController::class, 'login'])->name('Auth.login');
+    Route::post('/login', [AuthController::class, 'loginUser'])->name('login');
 
-// Reset password
-Route::get('/reset-password', [AuthController::class, 'formResetPassword'])->name('Auth.formResetPassword')->middleware(checkReferrer::class);
-Route::get('/change-password/{id}', [AuthController::class, 'formChangePassword'])->name('Auth.ChangePassword')->middleware(checkReferrer::class);
-Route::get('/forgot-password/{id}', [ForgotPasswordController::class, 'show'])->name('forgot-password')->middleware(checkReferrer::class);
-Route::post('/forgot-password/{id}', [ForgotPasswordController::class, 'checkCode'])->name('checkCode')->middleware(checkReferrer::class);
-Route::post('/Check-gmail', [ForgotPasswordController::class, 'checkGmail'])->name('checkGmail')->middleware(checkReferrer::class);
-Route::post('/update-password/{id}', [ForgotPasswordController::class, 'updatePassWord'])->name('updatePassWord')->middleware(checkReferrer::class);
+    // Reset password
+    Route::get('/reset-password', [AuthController::class, 'formResetPassword'])->name('Auth.formResetPassword')->middleware(checkReferrer::class);
+    Route::get('/change-password/{id}', [AuthController::class, 'formChangePassword'])->name('Auth.ChangePassword')->middleware(checkReferrer::class);
+    Route::get('/forgot-password/{id}', [ForgotPasswordController::class, 'show'])->name('forgot-password')->middleware(checkReferrer::class);
+    Route::post('/forgot-password/{id}', [ForgotPasswordController::class, 'checkCode'])->name('checkCode')->middleware(checkReferrer::class);
+    Route::post('/Check-gmail', [ForgotPasswordController::class, 'checkGmail'])->name('checkGmail')->middleware(checkReferrer::class);
+    Route::post('/update-password/{id}', [ForgotPasswordController::class, 'updatePassWord'])->name('updatePassWord')->middleware(checkReferrer::class);
 
 
 Route::middleware(['auth', 'role:admin|user'])->group(function () {
-    Route::middleware(MultipleLanguage::class)->group(function () {
+    // Route::middleware(MultipleLanguage::class)->group(function () {
         Route::get('/', [DashBoardController::class, 'index'])->name('dashborad.index');
         Route::post('/log-out', [AuthController::class, 'logout'])->name('logout');
         // User

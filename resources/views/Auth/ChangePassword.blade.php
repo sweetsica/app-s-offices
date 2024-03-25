@@ -20,8 +20,9 @@
                     <div>
 
                         <a href="index" class="mb-5 d-block auth-logo">
-                            <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                            <img src="assets/images/logo-light.png" alt="" height="22"
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
+                                class="logo logo-dark">
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
                                 class="logo logo-light">
                         </a>
                         <div class="card">
@@ -29,30 +30,33 @@
                             <div class="card-body p-4">
 
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Thay đổi mật khẩu</h5>
+                                    <h5 class="text-primary">{{ __('Login.change_password') }}</h5>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    @if(session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
-                                    <form action="{{ route('updatePassWord',$userId) }}" method="POST" autocomplete="off" >
+                                    @if (session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
+                                    <form action="{{ route('updatePassWord', $userId) }}" method="POST"
+                                        autocomplete="off">
                                         @csrf
                                         <div class="mb-3">
-                                            <label class="form-label" for="passwordNew">Mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="passwordNew" name="passWord1"
-                                                placeholder="Nhập mật khẩu mới">
+                                            <label class="form-label"
+                                                for="passwordNew">{{ __('Login.new_password') }}</label>
+                                            <input type="password" class="form-control" id="passwordNew"
+                                                name="passWord1" placeholder="{{ __('Login.enter_new_password') }}">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label" for="confirmPassword">Xác nhận mật khẩu</label>
-                                            <input type="password" class="form-control" id="confirmPassword" name="passWord2"
-                                                placeholder="Nhập lại mật khẩu">
+                                            <label class="form-label"
+                                                for="confirmPassword">{{ __('Login.confirm_password') }}</label>
+                                            <input type="password" class="form-control" id="confirmPassword"
+                                                name="passWord2" placeholder="{{ __('Login.enter_confirm_password') }}">
                                         </div>
                                         <div class="mt-3 text-end">
                                             <button class="btn btn-primary w-sm waves-effect waves-light"
-                                                type="submit">Xác nhận</button>
+                                                type="submit">{{ __('Login.confirm') }}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -63,8 +67,7 @@
                             <p>©
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Minible. Crafted with <i class="mdi mdi-heart text-danger"></i>
-                                by Themesbrand
+                                </script> Powered by Steam
                             </p>
                         </div>
                     </div>

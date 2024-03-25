@@ -5,19 +5,19 @@
     <div class="navbar-brand-box">
         <a href="index" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="assets/images/logo-sm.png" alt="" height="22">
+                <img src="{{ asset('assets/images/favicon.png') }}" alt="" height="30">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logo-dark.png" alt="" height="20">
+                <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="50">
             </span>
         </a>
 
         <a href="index" class="logo logo-light">
             <span class="logo-sm">
-                <img src="assets/images/logo-sm.png" alt="" height="22">
+                <img src="{{ asset('assets/images/favicon.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logo-light.png" alt="" height="20">
+                <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="30">
             </span>
         </a>
     </div>
@@ -32,65 +32,63 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title"{{ __('Files.Menu') }}></li>
-
                 <li>
                     <a href="/">
                         <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
-                        <span>DashBoard</span>
+                        <span>{{ __('Sidebar.dashboard') }}</span>
                     </a>
                 </li>
 
-                <li class="menu-title">Cơ cấu tổ chức</li>
+                <li class="menu-title">{{ __('Sidebar.organizational_structure') }}</li>
 
                 <li>
                     <a href="{{ route('user.index') }}" class="waves-effect">
                         <i class="uil-user"></i>
-                        <span>Danh sách nhân sự</span>
+                        <span>{{ __('Sidebar.list_user') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('department.list') }}" class="waves-effect">
                         <i class="uil-sitemap"></i>
-                        <span>Danh sách phòng ban</span>
+                        <span>{{ __('Sidebar.list_department') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('position.list') }}" class="waves-effect">
                         <i class="uil-location-arrow"></i>
-                        <span>Danh sách vị trí</span>
+                        <span>{{ __('Sidebar.list_position') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="uil-server-alt"></i>
-                        <span>Quản lý role</span>
+                        <span>{{ __('Sidebar.role_manage') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="uil-question-circle"></i>
-                        <span>Quản lý permision</span>
+                        <span>{{ __('Sidebar.permision_manage') }}</span>
                     </a>
                 </li>
 
-                <li class="menu-title">Tài liệu</li>
+                <li class="menu-title">{{ __('Sidebar.document') }}</li>
 
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="uil-folder"></i>
-                        <span>Danh sách tài liệu</span>
+                        <span>{{ __('Sidebar.list_document') }}</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="uil-folder-lock"></i>
-                        <span>Thống kê tài liệu theo phòng ban</span>
+                        <span>{{ __('Sidebar.document_by_department') }}</span>
                     </a>
                 </li>
             </ul>

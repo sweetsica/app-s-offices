@@ -17,8 +17,9 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <a href="" class="mb-5 d-block auth-logo">
-                            <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                            <img src="assets/images/logo-light.png" alt="" height="22"
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
+                                class="logo logo-dark">
+                            <img src="{{ asset('assets/images/logo-master.png') }}" alt="" height="120"
                                 class="logo logo-light">
                         </a>
                     </div>
@@ -30,24 +31,24 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                                <h5 class="text-primary">Welcome Back !</h5>
-                                <p class="text-muted">Sign in to continue to Minible.</p>
+                                <h5 class="text-primary">{{ __('Login.otp') }}</h5>
                             </div>
                             <div class="p-2 mt-4">
-                                @if(session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
-                                <form action="{{ route('checkCode',$userId) }}" method="POST" autocomplete="off">
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+                                <form action="{{ route('checkCode', $userId) }}" method="POST" autocomplete="off">
                                     @csrf
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Mã</label>
+                                        <label class="form-label" for="username">{{ __('Login.code') }}</label>
                                         <input type="text" class="form-control" id="username" name="code"
-                                            placeholder="Enter code">
+                                            placeholder="{{ __('Login.otp') }}">
                                     </div>
                                     <div class="mt-3 text-end">
-                                        <button class="g-recaptcha btn btn-primary w-sm waves-effect waves-light" type="submit">okiiiii</button>
+                                        <button class="g-recaptcha btn btn-primary w-sm waves-effect waves-light"
+                                            type="submit">{{ __('Login.confirm') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -59,8 +60,7 @@
                         <p>©
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> Minible. Crafted with <i class="mdi mdi-heart text-danger"></i> by
-                            Themesbrand
+                            </script> Powered by Steam
                         </p>
                     </div>
 
