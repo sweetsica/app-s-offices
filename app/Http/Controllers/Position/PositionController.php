@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Position;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PositionController extends Controller
 {
@@ -65,8 +66,51 @@ class PositionController extends Controller
         ->with('positionDetail', $positionDetail);
     }
 
+    public function update(Request $request, $id){
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'code' => [
+                    'nullable',
+                    Rule::unique('positions')->ignore($id),
+                ],
+                'position_level' => 'nullable',
+                'department_id' => 'nullable',
+                'description' => 'nullable',
+            ], [
+                'code.unique' => 'Mã code đã tồn tại. Vui lòng chọn một mã khác.',
+            ]);
+            $data = Position::find($id);
+            $data->name = $validatedData['name'];
+            $data->code = $validatedData['code'];
+            $data->position_level = $validatedData['position_level'] ?? null;
+            $data->department_id = $validatedData['department_id'] ?? null;
+            $data->description=$validatedData['description'] ?? null;
+            $data->save();
+            $request->session()->flash('success', 'Sửa thành công');
+            return redirect()->route('position.list');
+        } catch (Exception $e) {
+            dd($e);
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
+    }
+
     public function modalDelete($id) {
         return view('Position.partials.Modal.Delete.ContentModalDelete')
         ->with('id', $id);
     }
+
+    public function destroy(string $id)
+    {
+        try {
+            $position = Position::find($id);
+            $position->delete();
+            return back();
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
+    }
+
 }

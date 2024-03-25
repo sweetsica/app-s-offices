@@ -6,8 +6,12 @@
         <div class="col-xl-4">
             @include('Department.partials.TreeDepartment.TreeDepartment')
         </div>
-
         <div class="col-xl-8">
+            @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
             @include('Department.partials.Table.table')
         </div>
     </div>

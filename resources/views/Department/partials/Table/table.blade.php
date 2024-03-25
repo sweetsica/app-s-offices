@@ -66,7 +66,7 @@
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị cha">
-                                Đơn vị cha
+                                {{ $department->daddy->name ?? ''}}
                             </div>
                         </td>
                         <td>
@@ -76,7 +76,7 @@
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Trưởng bộ phận">
-                                Trưởng bộ phận
+                                {{ $department->user->name ?? ''}}
                             </div>
                         </td>
                         <td>

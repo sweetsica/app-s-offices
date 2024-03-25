@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DepartmentController extends Controller
 {
@@ -21,7 +22,7 @@ class DepartmentController extends Controller
                 'departments.user_id',
                 'departments.description',
                 'departments.area_id'
-            )->get();
+            )->with('user','daddy')->get();
             return view('Department.index',compact('departments'));
         } catch (Exception $e) {
             // dd($e);
@@ -61,11 +62,20 @@ class DepartmentController extends Controller
         }
     }
 
+    public function modalEdit($id) {
+        $departmentDetail = Department::where('id', $id)->first();
+        return view('Department.partials.Modal.Edit.ContentModalEdit')
+        ->with('departmentDetail', $departmentDetail);
+    }
+
     public function update(Request $request,$id){
         try {
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'code' => 'required|unique:departments,code|string|max:255',
+                'code' => [
+                    'nullable',
+                    Rule::unique('departments')->ignore($id),
+                ],
                 'parent_id' =>'nullable|exists:departments,id',
                 'order' => 'nullable',
                 'area_id' => 'nullable',
@@ -103,14 +113,20 @@ class DepartmentController extends Controller
         }
     }
 
-    public function modalEdit($id) {
-        $departmentDetail = Department::where('id', $id)->first();
-        return view('Department.partials.Modal.Edit.ContentModalEdit')
-        ->with('departmentDetail', $departmentDetail);
-    }
-
     public function modalDelete($id) {
         return view('Department.partials.Modal.Delete.ContentModalDelete')
         ->with('id', $id);
+    }
+
+    public function destroy(string $id)
+    {
+        try {
+            $department = Department::find($id);
+            $department->delete();
+            return back();
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
     }
 }

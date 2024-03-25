@@ -28,7 +28,7 @@
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Vị trí *</label>
-                                <select class="form-control select2" id="formSelect" required name="department_id">
+                                <select class="form-control select2" id="formSelect" required name="position_id">
                                     <option disabled selected>Chọn vị trí*</option>
                                     @foreach (session('listPositions') as $position)
                                         <option value="{{ $position->id }}">
@@ -40,7 +40,7 @@
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Phòng ban *</label>
-                                <select class="form-control select2" id="formSelect" required name="position_id">
+                                <select class="form-control select2" id="formSelect" required name="department_id">
                                     <option disabled selected>Chọn vị trí*</option>
                                     @foreach (session('departments') as $department)
                                         <option value="{{ $department->id }}">

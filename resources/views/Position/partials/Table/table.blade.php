@@ -105,7 +105,7 @@
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị công tác">
-                                {{ $position->departement->name }}
+                                {{ $position->departement->name ?? ''}}
                             </div>
                         </td>
                         <td>

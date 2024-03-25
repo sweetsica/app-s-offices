@@ -1,4 +1,5 @@
-<form class="custom-validation" method="POST" action="">
+<form class="custom-validation" method="POST" action="{{ route('user.update',$usersDetail->id) }}">
+    @method('PUT')
     @csrf
     <div class="modal-body">
         <div class="row">
@@ -20,7 +21,7 @@
                 <div class="mb-3">
                     <label class="form-label">Vị trí *</label>
                     <select class="form-control select2" id="formSelect" required name="position_id">
-                        <option>Chọn vị trí*</option>
+                        <option value="">Chọn vị trí*</option>
                         @foreach (session('listPositions') as $position)
                             <option value="{{ $position->id }}"
                                 {{ $position->id == $usersDetail->position_id ? 'selected' : '' }}>
@@ -64,8 +65,7 @@
             <div class="col-12 col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" required placeholder="Nhập password" name="password"
-                        value="{{ $usersDetail->password }}" />
+                    <input type="text" class="form-control" placeholder="Nhập password" name="password" />
                 </div>
             </div>
         </div>

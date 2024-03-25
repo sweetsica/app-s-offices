@@ -15,6 +15,11 @@ class Department extends Model
 
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     //    public function children()
     // {
     //     return $this->hasMany(Department::class, 'parent_id', 'id');
@@ -24,7 +29,10 @@ class Department extends Model
     // {
     //     return $this->children()->with('allDescendants');
     // }
-
+    public function daddy()
+    {
+        return $this->belongsTo(Department::class, 'parent_id');
+    }
 
 
     public function children()

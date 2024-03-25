@@ -1,5 +1,6 @@
-<form class="custom-validation" action="" method="PUT">
+<form class="custom-validation" action="{{ route('position.update',$positionDetail->id) }}" method="POST">
     @csrf
+    @method('PUT')
     <div class="modal-body">
         <div class="row">
             <div class="col-12 col-md-6">
