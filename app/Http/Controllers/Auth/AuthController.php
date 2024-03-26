@@ -26,11 +26,11 @@ class AuthController extends Controller
             $password = $request->input('userpassword');
             // $password =  Hash::make($request->userpassword);
             // dd($password);
-            $account = User::where(function ($query) use ($email) {
-                $query->where('email', $email);
-            })->first();
+            // $account = User::where(function ($query) use ($email) {
+            //     $query->where('email', $email)->where('status','0');
+            // })->first();
 
-            $credentials = ['email' => $email, 'password' => $password];
+            $credentials = ['email' => $email, 'password' => $password,'status'=>'0'];
 
             if (Auth::attempt($credentials)) {
                 // Đăng nhập thành công

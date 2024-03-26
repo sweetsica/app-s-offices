@@ -9,6 +9,8 @@ use App\Http\Controllers\Position\PositionController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Language;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Middleware\checkReferrer;
 use App\Http\Middleware\MultipleLanguage;
 
@@ -69,6 +71,22 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
         Route::put('/update-position/{id}', [PositionController::class, 'update'])->name('position.update');
         Route::get('/modalDeletePosition/{id}', [PositionController::class, 'modalDelete'])->name('position.modalDelete');
         Route::delete('/delete-position/{id}', [PositionController::class, 'destroy'])->name('delete.position');
+
+        // Role
+        Route::get('/list-role', [RoleController::class, 'index'])->name('role.list');
+        Route::post('/store-role', [RoleController::class, 'store'])->name('role.store');
+        Route::get('/modalEditRole/{id}', [RoleController::class, 'modalEdit'])->name('role.modalEdit');
+        Route::put('/update-role/{id}', [RoleController::class, 'update'])->name('role.update');
+        Route::get('/modalDeleteRole/{id}', [RoleController::class, 'modalDelete'])->name('role.modalDelete');
+        Route::delete('/delete-role/{id}', [RoleController::class, 'destroy'])->name('delete.role');
+
+        // Permission
+        Route::get('/list-permission', [PermissionController::class, 'index'])->name('permission.list');
+        Route::post('/store-permission', [PermissionController::class, 'store'])->name('permission.store');
+        Route::get('/modalEditPermission/{id}', [PermissionController::class, 'modalEdit'])->name('permission.modalEdit');
+        Route::put('/update-permission/{id}', [PermissionController::class, 'update'])->name('permission.update');
+        Route::get('/modalDeletePermission/{id}', [PermissionController::class, 'modalDelete'])->name('permission.modalDelete');
+        Route::delete('/delete-permission/{id}', [PermissionController::class, 'destroy'])->name('delete.permission');
 
     });
 });

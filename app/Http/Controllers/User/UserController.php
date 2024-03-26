@@ -14,8 +14,8 @@ class UserController extends Controller
 {
     public function index() {
         try {
-            $users = User::all();
-            // dd($user);
+            $users = User::with('department','position')->get();
+            // dd($users);
             return view('User.index',compact('users'));
         } catch (Exception $e) {
             dd($e);

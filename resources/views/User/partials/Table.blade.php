@@ -71,12 +71,12 @@
                 </td>
                 <td>
                     <div class="text-center">
-                        Nhân viên kinh doanh
+                        {{ $user->position->name ?? ''}}
                     </div>
                 </td>
                 <td>
                     <div class="text-center">
-                        Phòng kinh doanh
+                        {{ $user->department->name ?? ''}}
                     </div>
                 </td>
                 <td>
