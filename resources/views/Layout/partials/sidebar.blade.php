@@ -63,14 +63,14 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('role.list') }}" class="waves-effect">
                         <i class="uil-server-alt"></i>
                         <span>{{ __('Sidebar.role_manage') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('permission.list') }}" class="waves-effect">
                         <i class="uil-question-circle"></i>
                         <span>{{ __('Sidebar.permision_manage') }}</span>
                     </a>
