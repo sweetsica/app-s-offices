@@ -10,9 +10,8 @@ class PermissionController extends Controller
 {
     public function index() {
         try {
-            $roles = Permission::all();
-            dd($roles);
-            // return view('User.index',compact('roles'));
+            $permissions = Permission::all();
+            return view('Permission.index',compact('permissions'));
         } catch (Exception $e) {
             dd($e);
             $error = $e->getMessage();
@@ -29,7 +28,7 @@ class PermissionController extends Controller
             $data->name = $validatedData['name'];
             $data->save();
             $request->session()->flash('success', 'Thêm mới thành công');
-            // return redirect()->route('department.list');
+            return redirect()->route('permission.list');
         }catch (Exception $e) {
             dd($e);
             $error = $e->getMessage();
@@ -38,10 +37,9 @@ class PermissionController extends Controller
     }
 
     public function modalEdit($id) {
-        $roleDetail = Permission::where('id', $id)->first();
-        dd($roleDetail);
-        // return view('Department.partials.Modal.Edit.ContentModalEdit')
-        // ->with('roleDetail', $roleDetail);
+        $permissionDetail = Permission::where('id', $id)->first();
+        return view('Permission.partials.Modal.Edit.ContentModalEdit')
+        ->with('permissionDetail', $permissionDetail);
     }
 
     public function update(Request $request,$id){
@@ -54,7 +52,7 @@ class PermissionController extends Controller
             $data->name = $validatedData['name'];
             $data->save();
             $request->session()->flash('success', 'Sửa thành công');
-            // return redirect()->route('department.list');
+            return redirect()->route('permission.list');
         }catch (Exception $e) {
             dd($e);
             $error = $e->getMessage();
@@ -63,8 +61,8 @@ class PermissionController extends Controller
     }
 
     public function modalDelete($id) {
-        // return view('Department.partials.Modal.Delete.ContentModalDelete')
-        // ->with('id', $id);
+        return view('Permission.partials.Modal.Delete.ContentModalDelete')
+        ->with('id', $id);
     }
 
     public function destroy(string $id)

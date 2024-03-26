@@ -11,8 +11,7 @@ class RoleController extends Controller
     public function index() {
         try {
             $roles = Role::all();
-            dd($roles);
-            // return view('User.index',compact('roles'));
+            return view('Role.index')->with('roles', $roles);
         } catch (Exception $e) {
             dd($e);
             $error = $e->getMessage();
@@ -29,7 +28,7 @@ class RoleController extends Controller
             $data->name = $validatedData['name'];
             $data->save();
             $request->session()->flash('success', 'Thêm mới thành công');
-            // return redirect()->route('department.list');
+            return redirect()->route('role.list');
         }catch (Exception $e) {
             dd($e);
             $error = $e->getMessage();
@@ -39,9 +38,8 @@ class RoleController extends Controller
 
     public function modalEdit($id) {
         $roleDetail = Role::where('id', $id)->first();
-        dd($roleDetail);
-        // return view('Department.partials.Modal.Edit.ContentModalEdit')
-        // ->with('roleDetail', $roleDetail);
+        return view('Role.partials.Modal.Edit.ContentModalEdit')
+        ->with('roleDetail', $roleDetail);
     }
 
     public function update(Request $request,$id){
@@ -54,7 +52,7 @@ class RoleController extends Controller
             $data->name = $validatedData['name'];
             $data->save();
             $request->session()->flash('success', 'Sửa thành công');
-            // return redirect()->route('department.list');
+            return redirect()->route('role.list');
         }catch (Exception $e) {
             dd($e);
             $error = $e->getMessage();
@@ -63,8 +61,8 @@ class RoleController extends Controller
     }
 
     public function modalDelete($id) {
-        // return view('Department.partials.Modal.Delete.ContentModalDelete')
-        // ->with('id', $id);
+        return view('Role.partials.Modal.Delete.ContentModalDelete')
+        ->with('id', $id);
     }
 
     public function destroy(string $id)
