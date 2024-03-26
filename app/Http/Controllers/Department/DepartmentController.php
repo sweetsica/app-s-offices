@@ -22,7 +22,8 @@ class DepartmentController extends Controller
                 'departments.user_id',
                 'departments.description',
                 'departments.area_id'
-            )->with('user','daddy')->get();
+            )->with('user','daddy','children')->get();
+                // dd($departments);
             return view('Department.index',compact('departments'));
         } catch (Exception $e) {
             // dd($e);
