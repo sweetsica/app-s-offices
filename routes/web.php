@@ -6,8 +6,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Position\PositionController;
-use App\Http\Controllers\Role\RoleController;
-use App\Http\Controllers\Permission\PermissionController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Language;
 use App\Http\Controllers\LanguageController;
@@ -89,16 +87,6 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
         Route::put('/update-permission/{id}', [PermissionController::class, 'update'])->name('permission.update');
         Route::get('/modalDeletePermission/{id}', [PermissionController::class, 'modalDelete'])->name('permission.modalDelete');
         Route::delete('/delete-permission/{id}', [PermissionController::class, 'destroy'])->name('delete.permission');
-
-            // Role
-            Route::get('/list-role', [RoleController::class, 'index'])->name('role.list');
-            Route::get('/modalEditRole/{id}', [RoleController::class, 'modalEdit'])->name('role.modalEdit');
-            Route::get('/modalDeleteRole/{id}', [RoleController::class, 'modalDelete'])->name('role.modalDelete');
-
-            // Permission
-            Route::get('/list-permission', [PermissionController::class, 'index'])->name('permission.list');
-            Route::get('/modalEditPermission/{id}', [PermissionController::class, 'modalEdit'])->name('permission.modalEdit');
-            Route::get('/modalDeletePermission/{id}', [PermissionController::class, 'modalDelete'])->name('permission.modalDelete');
     });
 });
 
