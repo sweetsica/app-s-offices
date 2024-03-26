@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
-            <form class="custom-validation" action="" method="POST">
+            <form class="custom-validation" action="{{ route('role.store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="row">

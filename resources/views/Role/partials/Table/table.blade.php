@@ -29,31 +29,33 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="STT">
-                            1
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Tên">
-                            Tên Role
-                        </div>
-                    </td>
+                @foreach ($roles as $role)
+                    <tr>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="{{ $role->id }}">
+                                {{ $role->id }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="{{ $role->name }}">
+                                {{ $role->name }}
+                            </div>
+                        </td>
 
-                    <td>
-                        <div class="text-center">
-                            <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
-                                data-bs-target="#modalEdit" data-attr="{{ route('role.modalEdit', 1) }}"
-                                style="border: none; background-color: transparent"><i
-                                    class="uil uil-pen font-size-18"></i></button>
-                            <button class="px-3 text-danger btn-delete" data-bs-toggle="modal"
-                                data-bs-target="#modalDelete" data-attr="{{ route('role.modalDelete', 1) }}"
-                                style="border: none; background-color: transparent"><i
-                                    class="uil uil-trash-alt font-size-18"></i></button>
-                        </div>
-                    </td>
-                </tr>
+                        <td>
+                            <div class="text-center">
+                                <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
+                                    data-bs-target="#modalEdit" data-attr="{{ route('role.modalEdit', $role->id) }}"
+                                    style="border: none; background-color: transparent"><i
+                                        class="uil uil-pen font-size-18"></i></button>
+                                <button class="px-3 text-danger btn-delete" data-bs-toggle="modal"
+                                    data-bs-target="#modalDelete" data-attr="{{ route('role.modalDelete', $role->id) }}"
+                                    style="border: none; background-color: transparent"><i
+                                        class="uil uil-trash-alt font-size-18"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

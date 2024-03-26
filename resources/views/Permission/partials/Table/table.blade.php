@@ -29,31 +29,35 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="STT">
-                            1
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center" data-bs-toggle="tooltip" title="Tên">
-                            Tên Permission
-                        </div>
-                    </td>
+                @foreach ($permissions as $permission)
+                    <tr>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="{{ $permission->id }}">
+                                {{ $permission->id }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center" data-bs-toggle="tooltip" title="{{ $permission->name }}">
+                                {{ $permission->name }}
+                            </div>
+                        </td>
 
-                    <td>
-                        <div class="text-center">
-                            <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
-                                data-bs-target="#modalEdit" data-attr="{{ route('permission.modalEdit', 1) }}"
-                                style="border: none; background-color: transparent"><i
-                                    class="uil uil-pen font-size-18"></i></button>
-                            <button class="px-3 text-danger btn-delete" data-bs-toggle="modal"
-                                data-bs-target="#modalDelete" data-attr="{{ route('permission.modalDelete', 1) }}"
-                                style="border: none; background-color: transparent"><i
-                                    class="uil uil-trash-alt font-size-18"></i></button>
-                        </div>
-                    </td>
-                </tr>
+                        <td>
+                            <div class="text-center">
+                                <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
+                                    data-bs-target="#modalEdit"
+                                    data-attr="{{ route('permission.modalEdit', $permission->id) }}"
+                                    style="border: none; background-color: transparent"><i
+                                        class="uil uil-pen font-size-18"></i></button>
+                                <button class="px-3 text-danger btn-delete" data-bs-toggle="modal"
+                                    data-bs-target="#modalDelete"
+                                    data-attr="{{ route('permission.modalDelete', $permission->id) }}"
+                                    style="border: none; background-color: transparent"><i
+                                        class="uil uil-trash-alt font-size-18"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
