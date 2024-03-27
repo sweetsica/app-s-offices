@@ -2,11 +2,8 @@
     <div class="card-body">
         <div id="CoCauToChuc" class="wapper-tree">
             <ul id="tree1" style=" padding-bottom: 30px">
-                @if ($departments)
-                    {{-- @php
-                        dd($departments);
-                    @endphp --}}
-                    @foreach ($departments as $parent)
+                @if ($treeDepartment)
+                    @foreach ($treeDepartment as $parent)
                         {{-- Style Old style="width: max-content" --}}
                         <li data-id="{{ $parent->id }}" style="width: max-content">
                             {{ $parent->order ?? '' }}<a href="#" class="title-child"
