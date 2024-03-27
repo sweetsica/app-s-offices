@@ -11,6 +11,7 @@ use App\Http\Controllers\Language;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Middleware\checkReferrer;
 use App\Http\Middleware\MultipleLanguage;
 
@@ -87,6 +88,8 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
         Route::put('/update-permission/{id}', [PermissionController::class, 'update'])->name('permission.update');
         Route::get('/modalDeletePermission/{id}', [PermissionController::class, 'modalDelete'])->name('permission.modalDelete');
         Route::delete('/delete-permission/{id}', [PermissionController::class, 'destroy'])->name('delete.permission');
+
+        Route::get('/rolee/{id}', [RolePermissionController::class, 'rolePermission'])->name('sdsf.list');
     });
 });
 

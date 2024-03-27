@@ -76,4 +76,6 @@ class RoleController extends Controller
             return back()->with('error', $error);
         }
     }
+
+    
 }
