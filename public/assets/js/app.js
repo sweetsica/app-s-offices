@@ -295,7 +295,6 @@ File: Main Js File
     function initModal() {
         $('.modal').on('shown.bs.modal', function (e) {
             const modal = e.target;
-
             $(modal).find('.select2').select2('destroy');
             $(modal).find('.select2').select2();
 
