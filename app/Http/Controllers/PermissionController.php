@@ -8,6 +8,14 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('permission:Xem permission|Thêm permission|Sửa permission|Xóa permission',['only' => ['index']]);
+        $this->middleware('permission:Thêm permission',['only' => ['store']]);
+        $this->middleware('permission:Sửa permission',['only' => ['modalEdit','update']]);
+        $this->middleware('permission:Xóa permission',['only' => ['modalDelete','destroy']]);
+    }
+
     public function index() {
         try {
             $permissions = Permission::all();

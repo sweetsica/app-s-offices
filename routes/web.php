@@ -89,8 +89,7 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
         Route::get('/modalDeletePermission/{id}', [PermissionController::class, 'modalDelete'])->name('permission.modalDelete');
         Route::delete('/delete-permission/{id}', [PermissionController::class, 'destroy'])->name('delete.permission');
 
-        Route::get('/role/{id}', [RolePermissionController::class, 'rolePermission'])->name('rolePermission.list');
-        Route::put('/update-role-permission/{id}', [RolePermissionController::class, 'updateRolePermission'])->name('rolePermission.updateRolePermission');
+        Route::get('/rolee/{id}', [RolePermissionController::class, 'rolePermission'])->name('sdsf.list');
     });
 });
 

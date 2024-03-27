@@ -10,6 +10,11 @@ use Spatie\Permission\Models\Permission;
 class RolePermissionController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('permission:Xem quyền|Phân quyền',['only' => ['rolePermission']]);
+        $this->middleware('permission:Phân quyền',['only' => ['updateRolePermission']]);
+    }
+
     public function rolePermission($id) {
         $permissions = Permission::all();
         $role = Role::where('id', $id)->first();

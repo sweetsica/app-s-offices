@@ -11,6 +11,14 @@ use Illuminate\Validation\Rule;
 
 class PositionController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('permission:Xem vị trí|Thêm vị trí|Sửa vị trí|Xóa vị trí',['only' => ['index']]);
+        $this->middleware('permission:Thêm vị trí',['only' => ['store']]);
+        $this->middleware('permission:Sửa vị trí',['only' => ['modalEdit','update']]);
+        $this->middleware('permission:Xóa vị trí',['only' => ['modalDelete','destroy']]);
+    }
+
     public function index( ) {
 
         try {

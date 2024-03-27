@@ -13,6 +13,14 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('permission:Xem nhân sự|Thêm nhân sự|Sửa nhân sự|Xóa nhân sự',['only' => ['index']]);
+        $this->middleware('permission:Thêm nhân sự',['only' => ['store']]);
+        $this->middleware('permission:Sửa nhân sự',['only' => ['modalEdit','update']]);
+        $this->middleware('permission:Xóa nhân sự',['only' => ['modalDelete','destroy']]);
+    }
+
     public function index() {
         try {
             $userServices = new UserServices();

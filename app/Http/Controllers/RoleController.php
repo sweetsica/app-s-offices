@@ -8,6 +8,14 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('permission:Xem role|Thêm role|Sửa role|Xóa role',['only' => ['index']]);
+        $this->middleware('permission:Thêm role',['only' => ['store']]);
+        $this->middleware('permission:Sửa role',['only' => ['modalEdit','update']]);
+        $this->middleware('permission:Xóa role',['only' => ['modalDelete','destroy']]);
+    }
+
     public function index() {
         try {
             $roles = Role::all();
@@ -77,5 +85,5 @@ class RoleController extends Controller
         }
     }
 
-    
+
 }

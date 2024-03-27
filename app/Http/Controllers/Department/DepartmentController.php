@@ -12,6 +12,14 @@ use Illuminate\Validation\Rule;
 
 class DepartmentController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('permission:Xem phòng ban|Thêm phòng ban|Sửa phòng ban|Xóa phòng ban',['only' => ['index']]);
+        $this->middleware('permission:Thêm phòng ban',['only' => ['store']]);
+        $this->middleware('permission:Sửa phòng ban',['only' => ['modalEdit','update']]);
+        $this->middleware('permission:Xóa phòng ban',['only' => ['modalDelete','destroy']]);
+    }
+
     public function index() {
         try {
             $departmentServices = new DepartmentServices();
