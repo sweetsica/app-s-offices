@@ -52,21 +52,21 @@
             </thead>
 
             <tbody>
-                @foreach ($data as $department)
+                @foreach ($data as $item)
                     <tr>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Mã đơn vị">
-                                {{ $department->code }}
+                                {{ $item->code }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Tên đơn vị">
-                                {{ $department->name }}
+                                {{ $item->name }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị cha">
-                                {{ $department->daddy->name ?? ''}}
+                                {{ $item->daddy->name ?? ''}}
                             </div>
                         </td>
                         <td>
@@ -76,24 +76,24 @@
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Trưởng bộ phận">
-                                {{ $department->user->name ?? ''}}
+                                {{ $item->user->name ?? ''}}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Chức năng nhiệm vụ">
-                                {{ $department->description }}
+                                {{ $item->description }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center">
                                 <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
                                     data-bs-target="#modalEdit"
-                                    data-attr="{{ route('department.modalEdit', $department->id) }}"
+                                    data-attr="{{ route('department.modalEdit', $item->id) }}"
                                     style="border: none; background-color: transparent"><i
                                         class="uil uil-pen font-size-18"></i></button>
                                 <button class="px-3 text-danger btn-delete" data-bs-toggle="modal"
                                     data-bs-target="#modalDelete"
-                                    data-attr="{{ route('department.modalDelete', $department->id) }}"
+                                    data-attr="{{ route('department.modalDelete', $item->id) }}"
                                     style="border: none; background-color: transparent"><i
                                         class="uil uil-trash-alt font-size-18"></i></button>
                             </div>

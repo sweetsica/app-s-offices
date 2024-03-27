@@ -81,48 +81,48 @@
             </thead>
 
             <tbody>
-                @foreach ($positions as $position)
+                @foreach ($data as $item)
                     <tr>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="STT">
-                                {{ $position->id }}
+                                {{ $item->id }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Mã vị trí">
-                                {{ $position->code }}
+                                {{ $item->code }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Tên vị trí/Chức danh">
-                                {{ $position->name }}
+                                {{ $item->name }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Cấp nhân sự">
-                                {{ getPositionLevel($position->position_level, $arrayPosition) }}
+                                {{ getPositionLevel($item->position_level, $arrayPosition) }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị công tác">
-                                {{ $position->departement->name ?? ''}}
+                                {{ $item->departement->name ?? ''}}
                             </div>
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Mô tả công việc (Tóm tắt)">
-                                {{ $position->description }}
+                                {{ $item->description }}
                             </div>
                         </td>
                         <td>
                             <div class="text-center">
                                 <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
                                     data-bs-target="#modalEdit"
-                                    data-attr="{{ route('position.modalEdit', $position->id) }}"
+                                    data-attr="{{ route('position.modalEdit', $item->id) }}"
                                     style="border: none; background-color: transparent"><i
                                         class="uil uil-pen font-size-18"></i></button>
                                 <button class="px-3 text-danger btn-delete" data-bs-toggle="modal"
                                     data-bs-target="#modalDelete"
-                                    data-attr="{{ route('position.modalDelete', $position->id) }}"
+                                    data-attr="{{ route('position.modalDelete', $item->id) }}"
                                     style="border: none; background-color: transparent"><i
                                         class="uil uil-trash-alt font-size-18"></i></button>
                             </div>

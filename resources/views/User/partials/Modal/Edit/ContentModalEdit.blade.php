@@ -1,4 +1,4 @@
-<form class="custom-validation" method="POST" action="{{ route('user.update',$usersDetail->id) }}">
+<form class="custom-validation" method="POST" action="{{ route('user.update',$dataDetail->id) }}">
     @method('PUT')
     @csrf
     <div class="modal-body">
@@ -7,14 +7,14 @@
                 <div class="mb-3">
                     <label class="form-label">Mã *</label>
                     <input type="text" class="form-control" required placeholder="Nhập mã nhân sự*" name="code"
-                        value="{{ $usersDetail->code }}" />
+                        value="{{ $dataDetail->code }}" />
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Tên *</label>
                     <input type="text" class="form-control" required placeholder="Nhập tên nhân sự*" name="name"
-                        value="{{ $usersDetail->name }}" />
+                        value="{{ $dataDetail->name }}" />
                 </div>
             </div>
             <div class="col-12 col-md-6">
@@ -24,7 +24,7 @@
                         <option value="">Chọn vị trí*</option>
                         @foreach (session('listPositions') as $position)
                             <option value="{{ $position->id }}"
-                                {{ $position->id == $usersDetail->position_id ? 'selected' : '' }}>
+                                {{ $position->id == $dataDetail->position_id ? 'selected' : '' }}>
                                 {{ $position->code }} - {{ $position->name }}</option>
                         @endforeach
                     </select>
@@ -37,7 +37,7 @@
                         <option disabled>Chọn phòng ban*</option>
                         @foreach (session('departments') as $department)
                             <option value="{{ $department->id }}"
-                                {{ $department->id == $usersDetail->department_id ? 'selected' : '' }}>
+                                {{ $department->id == $dataDetail->department_id ? 'selected' : '' }}>
                                 {{ $department->code }} - {{ $department->name }}</option>
                         @endforeach
                     </select>
@@ -47,7 +47,7 @@
                 <div class="mb-3">
                     <label class="form-label">Email *</label>
                     <input type="email" class="form-control" required placeholder="Nhập địa chỉ Email" name="email"
-                        value="{{ $usersDetail->email }}" />
+                        value="{{ $dataDetail->email }}" />
                 </div>
             </div>
             <div class="col-12 col-md-6">
@@ -55,8 +55,8 @@
                     <label class="form-label">Trạng thái *</label>
                     <select class="form-control select2" id="formSelect" required name="status">
                         <option disabled>Chọn trạng thái*</option>
-                        <option value="0" {{ $usersDetail->status == 0 }}>Đang làm việc</option>
-                        <option value="1" {{ $usersDetail->status == 1 }}>Ngừng làm việc</option>
+                        <option value="0" {{ $dataDetail->status == 0 }}>Đang làm việc</option>
+                        <option value="1" {{ $dataDetail->status == 1 }}>Ngừng làm việc</option>
 
                     </select>
                 </div>

@@ -52,36 +52,36 @@
 
 
     <tbody>
-        @foreach ($users as $user)
+        @foreach ($data as $item)
             <tr>
                 <td>
                     <div class="text-center">
-                        {{ $user->id }}
+                        {{ $item->id }}
                     </div>
                 </td>
                 <td>
                     <div class="text-center">
-                        {{ $user->code }}
+                        {{ $item->code }}
                     </div>
                 </td>
                 <td>
                     <div class="text-center">
-                        {{ $user->name }}
+                        {{ $item->name }}
                     </div>
                 </td>
                 <td>
                     <div class="text-center">
-                        {{ $user->position->name ?? ''}}
+                        {{ $item->position->name ?? ''}}
                     </div>
                 </td>
                 <td>
                     <div class="text-center">
-                        {{ $user->department->name ?? ''}}
+                        {{ $item->department->name ?? ''}}
                     </div>
                 </td>
                 <td>
                     <div class="text-center">
-                        {{ $user->email }}
+                        {{ $item->email }}
                     </div>
                 </td>
 
@@ -91,7 +91,7 @@
                     </div>
                 </td>
                 <td>
-                    @switch($user->status)
+                    @switch($item->status)
                         @case(0)
                             <div class="text-center">
                                 <span class="badge bg-success">Đang làm việc</span>
@@ -109,11 +109,11 @@
                 <td>
                     <div class="text-center">
                         <button class="px-3 text-primary btn-edit" data-bs-toggle="modal" data-bs-target="#modalEdit"
-                            data-attr="{{ route('user.modalEdit', $user->id) }}"
+                            data-attr="{{ route('user.modalEdit', $item->id) }}"
                             style="border: none; background-color: transparent"><i
                                 class="uil uil-pen font-size-18"></i></button>
                         <button class="px-3 text-danger btn-delete" data-bs-toggle="modal" data-bs-target="#modalDelete"
-                            data-attr="{{ route('user.modalDelete', $user->id) }}"
+                            data-attr="{{ route('user.modalDelete', $item->id) }}"
                             style="border: none; background-color: transparent"><i
                                 class="uil uil-trash-alt font-size-18"></i></button>
                     </div>
