@@ -20,16 +20,16 @@
                             Tên role
                         </div>
                     </th>
-                    <th>
+                    {{-- <th>
                         <div class="text-center" data-bs-toggle="tooltip" title="Hành động">
                             Hành động
                         </div>
-                    </th>
+                    </th> --}}
                 </tr>
             </thead>
 
             <tbody>
-                @foreach ($roles as $role)
+                @foreach ($roles as $role)  
                     <tr>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="{{ $role->id }}">
@@ -38,11 +38,14 @@
                         </td>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="{{ $role->name }}">
-                                {{ $role->name }}
+                                <a class="text-black text-decoration-underline"
+                                    href="{{ route('rolePermission.list', $role->id) }}">
+                                    {{ $role->name }}
+                                </a>
                             </div>
                         </td>
 
-                        <td>
+                        {{-- <td>
                             <div class="text-center">
                                 <button class="px-3 text-primary btn-edit" data-bs-toggle="modal"
                                     data-bs-target="#modalEdit" data-attr="{{ route('role.modalEdit', $role->id) }}"
@@ -53,7 +56,7 @@
                                     style="border: none; background-color: transparent"><i
                                         class="uil uil-trash-alt font-size-18"></i></button>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>
