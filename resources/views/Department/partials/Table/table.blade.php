@@ -52,7 +52,7 @@
             </thead>
 
             <tbody>
-                @foreach ($departments as $department)
+                @foreach ($data as $department)
                     <tr>
                         <td>
                             <div class="text-center" data-bs-toggle="tooltip" title="Mã đơn vị">

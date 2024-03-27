@@ -23,9 +23,11 @@
                                 <label class="form-label">Đơn vị cha</label>
                                 <select class="form-control select2" id="form-select" name="parent_id">
                                     <option disabled selected>Chọn đơn vị cha</option>
-                                    @foreach ($departments as $department)
+                                    @if (session('departments'))
+                                    @foreach (session('departments') as $department)
                                         <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>

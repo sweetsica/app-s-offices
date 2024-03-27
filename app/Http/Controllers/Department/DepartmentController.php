@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Department;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\User;
+use App\Services\DepartmentServices\DepartmentServices;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -13,48 +14,33 @@ class DepartmentController extends Controller
 {
     public function index() {
         try {
-            $departments = Department::select(
-                'departments.id',
-                'departments.code',
-                'departments.name',
-                'departments.parent_id',
-                'departments.order',
-                'departments.user_id',
-                'departments.description',
-                'departments.area_id'
-            )->with('user','daddy','children')->get();
-                // dd($departments);
-            return view('Department.index',compact('departments'));
+            $departmentServices = new DepartmentServices();
+            $data = $departmentServices->list();
+            $treeDepartment = $departmentServices->treeDepartment();
+            // dd($data);
+            return view('Department.index',compact('data','treeDepartment'));
         } catch (Exception $e) {
-            // dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
     }
 
+    // public function treeDepartment() {
+    //     try {
+    //         $departmentServices = new DepartmentServices();
+    //         $data = $departmentServices->treeDepartment();
+    //         // dd($data);
+    //         return view('Department.index',compact('data'));
+    //     } catch (Exception $e) {
+    //         $error = $e->getMessage();
+    //         return back()->with('error', $error);
+    //     }
+    // }
+
     public function store(Request $request){
         try {
-            $validatedData = $request->validate([
-                'name' => 'required|string|max:255',
-                'code' => 'required|unique:departments,code|string|max:255',
-                'parent_id' =>'nullable|exists:departments,id',
-                'order' => 'nullable',
-                'area_id' => 'nullable',
-                'user_id' => 'nullable',
-                'description' => 'nullable',
-            ], [
-                'code.unique' => 'Mã code đã tồn tại. Vui lòng chọn một mã khác.',
-            ]);
-            $data = new Department();
-            $data->name = $validatedData['name'];
-            $data->code = $validatedData['code'];
-            $data->parent_id = $validatedData['parent_id'] ?? null;
-            $data->order = $validatedData['order'] ?? null;
-            $data->area_id = $validatedData['area_id'] ?? null;
-            $data->user_id = $validatedData['user_id'] ?? null;
-            $data->description = $validatedData['description'] ?? null;
-            $data->save();
-            $request->session()->flash('success', 'Thêm mới thành công');
+            $newOrderService = new DepartmentServices();
+            $data = $newOrderService->store($request);
             return redirect()->route('department.list');
         }catch (Exception $e) {
             dd($e);

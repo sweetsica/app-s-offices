@@ -33,12 +33,22 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($permissions as $permission)
+                                @if ($role->permissions)
+                                    @foreach ($permissions as $permission)
                                     <tr class="results-table-row odd">
                                         <td>
+                                            @php
+                                            $isChecked = false;
+                                            foreach ($role->permissions as $role_permission) {
+                                                if ($permission->id == $role_permission->id) {
+                                                    $isChecked = true;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
                                             <div class="text-center">
                                                 <input type="checkbox" class="form-check-input selectedId"
-                                                    name="permission_id[]" value="{{ $permission->id }}" />
+                                                {{ $isChecked ? 'checked' : '' }} name="permission[]" value="{{ $permission->name }}" />
                                             </div>
                                         </td>
                                         <td>
@@ -47,9 +57,9 @@
                                                 {{ $permission->name }}
                                             </div>
                                         </td>
-
                                     </tr>
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

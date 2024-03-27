@@ -40,6 +40,20 @@ class Department extends Model
         return $this->hasMany(Department::class, 'parent_id', 'id');
     }
 
+    public static function getDepartmentsTree($parentId = null)
+    {
+        $departments = Department::where('parent_id', $parentId)->get();
+        $tree = [];
+
+        foreach ($departments as $department) {
+            $children = self::getDepartmentsTree($department->id);
+            $department->children = $children;
+            $tree[] = $department;
+        }
+
+        return $tree;
+    }
+
     // public function descendants()
     // {
     //     return $this->children()->with('descendants');
