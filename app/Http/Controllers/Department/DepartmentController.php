@@ -24,6 +24,7 @@ class DepartmentController extends Controller
                 'departments.area_id'
             )->with('user','daddy','children')->get();
                 // dd($departments);
+            $departments = json_decode($departments);
             return view('Department.index',compact('departments'));
         } catch (Exception $e) {
             // dd($e);
