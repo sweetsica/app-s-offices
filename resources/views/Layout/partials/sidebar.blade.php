@@ -79,7 +79,7 @@
                 <li class="menu-title">{{ __('Sidebar.document') }}</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('fileManager.list') }}" class="waves-effect">
                         <i class="uil-folder"></i>
                         <span>{{ __('Sidebar.list_document') }}</span>
                     </a>
