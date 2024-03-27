@@ -2,8 +2,8 @@
     $(document).ready(function() {
         $.fn.extend({
             treed: function(o) {
-                var openedClass = 'bi-dash-square';
-                var closedClass = 'bi-plus-square';
+                var openedClass = 'uil-minus-square';
+                var closedClass = 'uil-plus-square';
 
                 if (typeof o != 'undefined') {
                     if (typeof o.openedClass != 'undefined') {
@@ -19,7 +19,7 @@
 
                 tree.find('li').has("ul").each(function() {
                     var branch = $(this);
-                    branch.prepend("<i class='indicator bi " + closedClass + "'></i>");
+                    branch.prepend("<i class='indicator " + closedClass + "'></i>");
                     branch.addClass('branch');
                     branch.on('click', function(e) {
                         if (this == e.target) {
@@ -71,7 +71,6 @@
 
         // Gọi treed() cho các cây của bạn
         $('#tree1').treed();
-        $('#tree2').treed();
 
         // Chọn thẻ <a> lưu trữ từ localStorage
         var savedLinks = JSON.parse(localStorage.getItem('savedLinks')) || [];
