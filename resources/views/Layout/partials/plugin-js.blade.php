@@ -28,8 +28,19 @@
 <script src="{{ asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
 <script src="{{ asset('assets/libs/@chenfengyuan/datepicker/datepicker.min.js') }}"></script>
 
+<script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
+
 <!-- datepicker js -->
 <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 
 <!-- init js -->
 <script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
+
+<!-- apexcharts -->
+<script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+
+<!-- dropzone plugin -->
+<script src="{{ asset('assets/libs/dropzone/min/dropzone.min.js') }}"></script>
+
+<!-- file-manager js -->
+<script src="{{ asset('assets/js/pages/file-manager.init.js') }}"></script>

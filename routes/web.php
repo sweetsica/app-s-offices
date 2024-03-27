@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Position\PositionController;
+use App\Http\Controllers\FileManager\FileManagerController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Language;
 use App\Http\Controllers\LanguageController;
@@ -50,7 +51,7 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
         Route::get('/', [DashBoardController::class, 'index'])->name('dashborad.index');
         Route::post('/log-out', [AuthController::class, 'logout'])->name('logout');
         // User
-        Route::get('/list-user', [UserController::class, 'index'])->name('user.index')->middleware(MultipleLanguage::class);
+        Route::get('/list-user', [UserController::class, 'index'])->name('user.index');
         Route::post('/list-user', [UserController::class, 'store'])->name('user.store');
         Route::get('/modalEditUser/{id}', [UserController::class, 'modalEdit'])->name('user.modalEdit');
         Route::put('/update-user/{id}', [UserController::class, 'update'])->name('user.update');
@@ -89,7 +90,11 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
         Route::get('/modalDeletePermission/{id}', [PermissionController::class, 'modalDelete'])->name('permission.modalDelete');
         Route::delete('/delete-permission/{id}', [PermissionController::class, 'destroy'])->name('delete.permission');
 
-        Route::get('/rolee/{id}', [RolePermissionController::class, 'rolePermission'])->name('sdsf.list');
+        Route::get('/role/{id}', [RolePermissionController::class, 'rolePermission'])->name('rolePermission.list');
+        Route::put('/update-role-permission/{id}', [RolePermissionController::class, 'updateRolePermission'])->name('rolePermission.updateRolePermission');
+
+        // File Manager
+        Route::get('/file-manager', [FileManagerController::class, 'index'])->name('fileManager.list');
     });
 });
 
