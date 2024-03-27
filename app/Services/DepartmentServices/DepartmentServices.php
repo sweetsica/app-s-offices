@@ -23,10 +23,6 @@ class DepartmentServices
                 'departments.description',
                 'departments.area_id'
             )->with('user','daddy','children')->get();
-            $tree = Department::getDepartmentsTree();
-            $jsonTree = json_encode($tree);
-            $decodedTree = json_decode($jsonTree, true);
-            dd($decodedTree);
             return json_decode($departments);
         } catch (Exception $e) {
             Log::error("[DepartmentServices][list] error " . $e->getMessage());
@@ -75,7 +71,6 @@ class DepartmentServices
             $tree = Department::getDepartmentsTree();
             $jsonTree = json_encode($tree);
             // $decodedTree = json_decode($jsonTree, true);
-
             return json_decode($jsonTree);
         } catch (Exception $e) {
             Log::error("[DepartmentServices][treeDepartment] error " . $e->getMessage());
