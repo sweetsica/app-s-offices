@@ -19,6 +19,7 @@
 
                 tree.find('li').has("ul").each(function() {
                     var branch = $(this);
+                    console.log('branch', branch);
                     branch.prepend("<i class='indicator " + closedClass + "'></i>");
                     branch.addClass('branch');
                     branch.on('click', function(e) {
@@ -59,7 +60,7 @@
                     branch.children().children().toggle();
                 });
 
-                tree.find('li:not(.branch)').css('margin-left', '2.2rem');
+                tree.find('li:not(.branch)').css('margin-left', '2rem');
 
                 tree.find('.branch .indicator').each(function() {
                     $(this).on('click', function() {
@@ -78,7 +79,7 @@
             $('#' + linkId).addClass('active');
             var parentLi = $('#' + linkId).closest('li');
             var icon = parentLi.children('i');
-            icon.attr('class', 'indicator bi bi-dash-square')
+            icon.attr('class', 'indicator uil-minus-square')
             parentLi.children().children().toggle()
         });
     });

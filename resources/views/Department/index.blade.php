@@ -84,7 +84,7 @@
         }
 
         .indicator {
-            font-size: 14px;
+            font-size: 1.1rem;
             color: #ca1f24;
             margin-right: 5px
         }
@@ -100,19 +100,19 @@
 @endsection
 @section('content')
     <div class="row mb-4">
-        <div class="col-xl-4">
+        <div class="col-xl-3">
             @include('Department.partials.TreeDepartment.TreeDepartment')
         </div>
-        <div class="col-xl-8">
+        <div class="col-xl-9">
             @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @elseif  (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @elseif (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             @include('Department.partials.Table.table')
         </div>
     </div>
