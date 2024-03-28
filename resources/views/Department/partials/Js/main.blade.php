@@ -19,7 +19,6 @@
 
                 tree.find('li').has("ul").each(function() {
                     var branch = $(this);
-                    console.log('branch', branch);
                     branch.prepend("<i class='indicator " + closedClass + "'></i>");
                     branch.addClass('branch');
                     branch.on('click', function(e) {
