@@ -14,7 +14,7 @@
                                 Lưu
                             </button>
                         </div>
-                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                        <table id="datatable-scroll" class="table table-striped table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
@@ -35,30 +35,31 @@
                             <tbody>
                                 @if ($role->permissions)
                                     @foreach ($permissions as $permission)
-                                    <tr class="results-table-row odd">
-                                        <td>
-                                            @php
-                                            $isChecked = false;
-                                            foreach ($role->permissions as $role_permission) {
-                                                if ($permission->id == $role_permission->id) {
-                                                    $isChecked = true;
-                                                    break;
-                                                }
-                                            }
-                                        @endphp
-                                            <div class="text-center">
-                                                <input type="checkbox" class="form-check-input selectedId"
-                                                {{ $isChecked ? 'checked' : '' }} name="permission[]" value="{{ $permission->name }}" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-center" data-bs-toggle="tooltip"
-                                                title="{{ $permission->name }}">
-                                                {{ $permission->name }}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                        <tr class="results-table-row odd">
+                                            <td>
+                                                @php
+                                                    $isChecked = false;
+                                                    foreach ($role->permissions as $role_permission) {
+                                                        if ($permission->id == $role_permission->id) {
+                                                            $isChecked = true;
+                                                            break;
+                                                        }
+                                                    }
+                                                @endphp
+                                                <div class="text-center">
+                                                    <input type="checkbox" class="form-check-input selectedId"
+                                                        {{ $isChecked ? 'checked' : '' }} name="permission[]"
+                                                        value="{{ $permission->name }}" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-center" data-bs-toggle="tooltip"
+                                                    title="{{ $permission->name }}">
+                                                    {{ $permission->name }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endif
                             </tbody>
                         </table>

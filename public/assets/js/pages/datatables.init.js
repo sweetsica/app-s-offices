@@ -6,8 +6,15 @@ Contact: themesbrand@gmail.com
 File: Datatables Js File
 */
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#datatable').DataTable();
+
+    var tableScroll = $('#datatable-scroll').DataTable({
+        "scrollY": 500,
+        "scrollX": true,
+        "scrollCollapse": true,
+        "paging": false
+    })
 
     //Buttons examples
     var table = $('#datatable-buttons').DataTable({
@@ -15,8 +22,13 @@ $(document).ready(function() {
         buttons: ['copy', 'excel', 'pdf', 'colvis']
     });
 
+    tableScroll.buttons().container()
+        .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+
+    $(".dataTables_length select").addClass('form-select form-select-sm');
+
     table.buttons().container()
         .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-        
-        $(".dataTables_length select").addClass('form-select form-select-sm');
-} );
+
+    $(".dataTables_length select").addClass('form-select form-select-sm');
+});

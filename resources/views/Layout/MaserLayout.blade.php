@@ -25,12 +25,17 @@
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
-        <div class="main-content">
+        <div class="d-flex justify-content-center align-items-center vh-100 bg-white">
+            <div class="spinner-border" role="status" id="loading">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <div class="main-content d-none" id="contents">
 
             <div class="page-content">
                 <div class="container-fluid">
                     @yield('content')
-
                 </div> <!-- container-fluid -->
             </div>
             <!-- End Page-content -->
@@ -56,7 +61,7 @@
 
     {{-- Custom js --}}
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    {{-- <script src="{{ asset('assets/js/showToastify.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/Loading.js') }}"></script>
 
 
     @yield('content-js')
