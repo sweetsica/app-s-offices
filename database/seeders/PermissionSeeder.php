@@ -21,7 +21,7 @@ class PermissionSeeder extends Seeder
         //Phân quyền phòng ban
         Permission::create(['name' => 'Xem phòng ban'])->assignRole('admin');
         Permission::create(['name' => 'Thêm phòng ban'])->assignRole('admin');
-        Permission::create(['name' => 'Sửa  phòng ban'])->assignRole('admin');
+        Permission::create(['name' => 'Sửa phòng ban'])->assignRole('admin');
         Permission::create(['name' => 'Xóa phòng ban'])->assignRole('admin');
          //Phân quyền vị trí
         Permission::create(['name' => 'Xem vị trí'])->assignRole('admin');

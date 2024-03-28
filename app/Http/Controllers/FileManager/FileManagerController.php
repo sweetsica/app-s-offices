@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FileManager;
 
 use App\Http\Controllers\Controller;
+use App\Models\FileManager;
 use App\Services\FileManagerServices\FileManagerServices;
 use Exception;
 use Illuminate\Http\Request;
@@ -27,18 +28,14 @@ class FileManagerController extends Controller
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
-        // return view('FileManager.index');
     }
 
     public function storeFolder(Request $request){
         try {
-            // dd(1);
             $fileManagerServices = new FileManagerServices();
             $data = $fileManagerServices->storeFolder($request);
-            // dd(1);
             return redirect()->route('fileManager.list');
         }catch (Exception $e) {
-            dd($e);
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
@@ -51,6 +48,23 @@ class FileManagerController extends Controller
             return redirect()->route('fileManager.list');
         }catch (Exception $e) {
             dd($e);
+            $error = $e->getMessage();
+            return back()->with('error', $error);
+        }
+    }
+
+    public function modalDelete($id) {
+        // return view('Position.partials.Modal.Delete.ContentModalDelete')
+        // ->with('id', $id);
+    }
+
+    public function destroy(string $id)
+    {
+        try {
+            $fileManager = FileManager::find($id);
+            $fileManager->delete();
+            return back();
+        } catch (Exception $e) {
             $error = $e->getMessage();
             return back()->with('error', $error);
         }
