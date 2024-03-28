@@ -26,9 +26,12 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="d-flex justify-content-center align-items-center vh-100 bg-white">
-            <div class="spinner-border" role="status" id="loading">
-                <span class="visually-hidden">Loading...</span>
+            <div id="loading">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
+
         </div>
 
         <div class="main-content d-none" id="contents">
