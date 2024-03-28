@@ -55,32 +55,42 @@
                 @foreach ($data as $item)
                     <tr>
                         <td>
-                            <div class="text-center" data-bs-toggle="tooltip" title="Mã đơn vị">
+                            <div class="text-center text-truncate" data-bs-toggle="tooltip" title="Mã đơn vị">
                                 {{ $item->code }}
                             </div>
                         </td>
                         <td>
-                            <div class="text-center" data-bs-toggle="tooltip" title="Tên đơn vị">
+                            <div class="text-center text-truncate" data-bs-toggle="tooltip" title="Tên đơn vị">
                                 {{ $item->name }}
                             </div>
                         </td>
                         <td>
-                            <div class="text-center" data-bs-toggle="tooltip" title="Đơn vị cha">
-                                {{ $item->daddy->name ?? ''}}
+                            <div class="text-center text-truncate" data-bs-toggle="tooltip" title="Đơn vị cha">
+                                {{ $item->daddy->name ?? '' }}
+                            </div>
+                        </td>
+                        @php
+                            $area = '';
+                            if ($item->area_id == 1) {
+                                $area = 'Hà Nội';
+                            } else {
+                                $area = 'Thành phố HCM';
+                            }
+                        @endphp
+                        <td>
+                            <div class="text-center text-truncate" data-bs-toggle="tooltip" title="{{ $area }}">
+                                {{ $area }}
                             </div>
                         </td>
                         <td>
-                            <div class="text-center" data-bs-toggle="tooltip" title="Địa bàn">
-                                Địa bàn
+                            <div class="text-center text-truncate" data-bs-toggle="tooltip"
+                                title=" {{ $item->user->name ?? '' }}">
+                                {{ $item->user->name ?? '' }}
                             </div>
                         </td>
                         <td>
-                            <div class="text-center" data-bs-toggle="tooltip" title="Trưởng bộ phận">
-                                {{ $item->user->name ?? ''}}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-center" data-bs-toggle="tooltip" title="Chức năng nhiệm vụ">
+                            <div class="text-center text-truncate" data-bs-toggle="tooltip"
+                                title="{{ $item->description }}">
                                 {{ $item->description }}
                             </div>
                         </td>

@@ -41,6 +41,7 @@
         <!-- end main content-->
 
     </div>
+
     <!-- END layout-wrapper -->
 
     @include('Layout.partials.right-sidebar')
@@ -55,8 +56,38 @@
 
     {{-- Custom js --}}
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/showToastify.js') }}"></script> --}}
+
 
     @yield('content-js')
+    <script>
+        var isSuccess = @json(session('success'));
+        var isError = @json(session('error'));
+
+        if (isSuccess && isSuccess != null) {
+            Toastify({
+                text: isSuccess,
+                duration: 3000,
+                close: true,
+                gravity: 'top',
+                position: 'right',
+                stopOnFocus: true,
+                backgroundColor: "#34c38f"
+            }).showToast();
+        }
+
+        if (isError && isError != null) {
+            Toastify({
+                text: isError,
+                duration: 3000,
+                close: true,
+                gravity: 'top',
+                position: 'right',
+                stopOnFocus: true,
+                backgroundColor: "#f46a6a"
+            }).showToast();
+        }
+    </script>
 </body>
 
 </html>

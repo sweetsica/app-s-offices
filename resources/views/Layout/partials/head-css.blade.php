@@ -34,3 +34,8 @@
        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
    <link href="{{ asset('assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet') }}" type="text/css" />
+
+   {{-- Toastify --}}
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.min.css"
+       integrity="sha512-UiKdzM5DL+I+2YFxK+7TDedVyVm7HMp/bN85NeWMJNYortoll+Nd6PU9ZDrZiaOsdarOyk9egQm6LOJZi36L2g=="
+       crossorigin="anonymous" referrerpolicy="no-referrer" />
