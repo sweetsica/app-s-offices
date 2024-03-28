@@ -41,6 +41,11 @@ class PermissionSeeder extends Seeder
         //Phân quyền
         Permission::create(['name' => 'Xem quyền'])->assignRole('admin');
         Permission::create(['name' => 'Phân quyền'])->assignRole('admin');
+        //Phân quyền file mannager
+        Permission::create(['name' => 'Xem danh sách tài liệu'])->assignRole('admin');
+        Permission::create(['name' => 'Thêm folder'])->assignRole('admin');
+        Permission::create(['name' => 'Thêm file'])->assignRole('admin');
+        Permission::create(['name' => 'Xóa tài liệu'])->assignRole('admin');
 
         // Permission::create(['name' => 'Xem '])->assignRole('admin');
         // Permission::create(['name' => 'Thêm '])->assignRole('admin');

@@ -95,6 +95,8 @@ Route::middleware(['auth', 'role:admin|user'])->group(function () {
 
         // File Manager
         Route::get('/file-manager', [FileManagerController::class, 'index'])->name('fileManager.list');
+        Route::post('/storeFolder-file-manager', [FileManagerController::class, 'storeFolder'])->name('fileManager.storeFolder');
+        Route::post('/storeFile-file-manager', [FileManagerController::class, 'storeFile'])->name('fileManager.storeFile');
     });
 });
 
