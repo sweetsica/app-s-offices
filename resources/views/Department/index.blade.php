@@ -11,7 +11,7 @@
         }
 
         .title-child {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: black;
             padding: 5px;
         }
@@ -95,6 +95,10 @@
 
         .tree li.open>ul {
             display: block;
+        }
+
+        tbody tr td div {
+            max-width: 200px;
         }
     </style>
 @endsection
